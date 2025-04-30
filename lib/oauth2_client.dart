@@ -301,32 +301,57 @@ class OAuth2Client {
   }
 
   /// Revokes both the Access and the Refresh tokens in the provided [tknResp]
-  Future<OAuth2Response> revokeToken(AccessTokenResponse tknResp,
-      {String? clientId, String? clientSecret, httpClient}) async {
+  Future<OAuth2Response> revokeToken(
+    AccessTokenResponse tknResp, {
+    String? clientId,
+    String? clientSecret,
+    httpClient,
+    Map<String, dynamic>? params,
+  }) async {
     var tokenRevocationResp = await revokeAccessToken(tknResp,
-        clientId: clientId, clientSecret: clientSecret, httpClient: httpClient);
+        clientId: clientId,
+        clientSecret: clientSecret,
+        httpClient: httpClient,
+        params: params);
     if (tokenRevocationResp.isValid()) {
       tokenRevocationResp = await revokeRefreshToken(tknResp,
           clientId: clientId,
           clientSecret: clientSecret,
-          httpClient: httpClient);
+          httpClient: httpClient,
+          params: params);
     }
 
     return tokenRevocationResp;
   }
 
   /// Revokes the Access Token in the provided [tknResp]
-  Future<OAuth2Response> revokeAccessToken(AccessTokenResponse tknResp,
-      {String? clientId, String? clientSecret, httpClient}) async {
+  Future<OAuth2Response> revokeAccessToken(
+    AccessTokenResponse tknResp, {
+    String? clientId,
+    String? clientSecret,
+    httpClient,
+    Map<String, dynamic>? params,
+  }) async {
     return await _revokeTokenByType(tknResp, 'access_token',
-        clientId: clientId, clientSecret: clientSecret, httpClient: httpClient);
+        clientId: clientId,
+        clientSecret: clientSecret,
+        httpClient: httpClient,
+        params: params);
   }
 
   /// Revokes the Refresh Token in the provided [tknResp]
-  Future<OAuth2Response> revokeRefreshToken(AccessTokenResponse tknResp,
-      {String? clientId, String? clientSecret, httpClient}) async {
+  Future<OAuth2Response> revokeRefreshToken(
+    AccessTokenResponse tknResp, {
+    String? clientId,
+    String? clientSecret,
+    httpClient,
+    Map<String, dynamic>? params,
+  }) async {
     return await _revokeTokenByType(tknResp, 'refresh_token',
-        clientId: clientId, clientSecret: clientSecret, httpClient: httpClient);
+        clientId: clientId,
+        clientSecret: clientSecret,
+        httpClient: httpClient,
+        params: params);
   }
 
   /// Generates the url to be used for fetching the authorization code.
@@ -487,8 +512,13 @@ class OAuth2Client {
 
   /// Revokes the specified token [type] in the [tknResp]
   Future<OAuth2Response> _revokeTokenByType(
-      AccessTokenResponse tknResp, String tokenType,
-      {String? clientId, String? clientSecret, httpClient}) async {
+    AccessTokenResponse tknResp,
+    String tokenType, {
+    String? clientId,
+    String? clientSecret,
+    httpClient,
+    Map<String, dynamic>? params,
+  }) async {
     var resp = OAuth2Response();
 
     if (revokeUrl == null) return resp;
@@ -500,7 +530,8 @@ class OAuth2Client {
         : tknResp.refreshToken;
 
     if (token != null) {
-      var params = {'token': token, 'token_type_hint': tokenType};
+      params ??= {};
+      params.addAll({'token': token, 'token_type_hint': tokenType});
 
       if (clientId != null) params[clientIdKey] = clientId;
       if (clientSecret != null) params[clientSecretKey] = clientSecret;

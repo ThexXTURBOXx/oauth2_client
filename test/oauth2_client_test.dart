@@ -1023,6 +1023,48 @@ void main() {
       expect(revokeResp.isValid(), true);
     });
 
+    test('Revoke both Access and Refresh token with custom params', () async {
+      final httpClient = MockClient();
+
+      when(httpClient.post(Uri.parse(revokeUrl),
+              body: {
+                'id_token_hint': '1234',
+                'token': accessToken,
+                'token_type_hint': 'access_token',
+                'client_id': clientId
+              },
+              headers: anyNamed('headers')))
+          .thenAnswer((_) async => http.Response('{}', 200));
+
+      when(httpClient.post(Uri.parse(revokeUrl),
+              body: {
+                'id_token_hint': '1234',
+                'token': refreshToken,
+                'token_type_hint': 'refresh_token',
+                'client_id': clientId
+              },
+              headers: anyNamed('headers')))
+          .thenAnswer((_) async => http.Response('{}', 200));
+
+      final respMap = <String, dynamic>{
+        'access_token': accessToken,
+        'token_type': 'Bearer',
+        'refresh_token': refreshToken,
+        'scope': scopes,
+        'expires_in': 3600,
+        'http_status_code': 200
+      };
+
+      final tknResp = AccessTokenResponse.fromMap(respMap);
+
+      final revokeResp = await oauth2Client.revokeToken(tknResp,
+          clientId: clientId,
+          httpClient: httpClient,
+          params: {'id_token_hint': '1234'});
+
+      expect(revokeResp.isValid(), true);
+    });
+
     test('Error in token revocation(1)', () async {
       final httpClient = MockClient();
 
