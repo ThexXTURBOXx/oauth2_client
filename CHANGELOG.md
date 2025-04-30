@@ -1,5 +1,5 @@
 ## [4.2.0] - 2025/04/30
-* Add optional `token_type_hint` parameter
+* Add support for optional parameters in revoke function
 
 ## [4.1.0] - 2025/03/12
 * Add TikTok OAuth 2.0 client
