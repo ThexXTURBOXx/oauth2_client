@@ -1,3 +1,6 @@
+## [4.2.0] - 2025/04/30
+* Add optional `token_type_hint` parameter
+
 ## [4.1.0] - 2025/03/12
 * Add TikTok OAuth 2.0 client
 * Fix example
