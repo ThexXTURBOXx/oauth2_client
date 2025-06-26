@@ -81,7 +81,7 @@ class AccessTokenResponse extends OAuth2Response {
   }
 
   ///Checks if the access token must be refreshed
-  bool refreshNeeded({secondsToExpiration = 30}) {
+  bool refreshNeeded({int secondsToExpiration = 30}) {
     var needsRefresh = false;
 
     if (expirationDate != null) {

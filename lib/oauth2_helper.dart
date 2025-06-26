@@ -175,7 +175,7 @@ class OAuth2Helper {
   }
 
   /// Revokes the previously fetched token
-  Future<OAuth2Response> disconnect({httpClient}) async {
+  Future<OAuth2Response> disconnect({http.Client? httpClient}) async {
     httpClient ??= http.Client();
 
     final tknResp = await tokenStorage.getToken(scopes ?? []);

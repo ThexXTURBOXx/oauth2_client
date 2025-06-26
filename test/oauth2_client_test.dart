@@ -1175,7 +1175,7 @@ Uint8List byteBody(Map params) => utf8.encode(params.entries
     .join('&'));
 
 class HeaderMatcher extends CustomMatcher {
-  HeaderMatcher(matcher)
+  HeaderMatcher(Object? matcher)
       : super('Header without Content-Type is', 'header', matcher);
 
   @override
