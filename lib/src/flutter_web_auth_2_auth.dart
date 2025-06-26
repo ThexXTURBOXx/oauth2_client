@@ -2,9 +2,9 @@ import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 
 import 'base_web_auth.dart';
 
-BaseWebAuth createWebAuth() => IoWebAuth();
+BaseWebAuth createWebAuth() => FlutterWebAuth2Authenticator();
 
-class IoWebAuth implements BaseWebAuth {
+class FlutterWebAuth2Authenticator implements BaseWebAuth {
   @override
   Future<String> authenticate(
       {required String callbackUrlScheme,
