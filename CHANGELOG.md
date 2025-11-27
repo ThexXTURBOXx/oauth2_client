@@ -1,3 +1,8 @@
+## [4.2.1] - 2025/11/27
+* Update dependency constraints
+* Update and fix lints
+* Remove unnecessary dependency on `meta` package
+
 ## [4.2.0] - 2025/04/30
 * Add support for optional parameters in revoke function
 
