@@ -6,22 +6,35 @@ on:
 
 jobs:
   build-and-test:
+    name: Build and Test
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-    - uses: subosito/flutter-action@v2
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
 
-    - run: flutter pub get
+      - name: Setup Pana
+        run: flutter pub global activate pana
 
-    - run: dart format --output none --set-exit-if-changed .
+      - name: Get dependencies
+        run: flutter pub get
 
-    - run: flutter analyze
+      - name: Lint
+        run: dart format -o none --set-exit-if-changed .
 
-    - run: flutter test --coverage
+      - name: Analyze
+        run: dart analyze
 
-    - uses: codecov/codecov-action@v5
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
-        files: ./coverage/lcov.info
+      - run: flutter test --coverage
+
+      - uses: codecov/codecov-action@v5
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          files: ./coverage/lcov.info
+
+      - name: Pana
+        run: pana
