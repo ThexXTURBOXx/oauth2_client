@@ -1,3 +1,6 @@
+## [4.2.2] - 2025/12/14
+* Bump `flutter_secure_storage` to stable `10.x`
+
 ## [4.2.1] - 2025/11/27
 * Update dependency constraints
 * Update and fix lints
