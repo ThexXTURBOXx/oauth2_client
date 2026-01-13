@@ -1,3 +1,6 @@
+## [4.2.3] - 2026/01/13
+* Bump `flutter_web_auth_2` to stable `5.x`
+
 ## [4.2.2] - 2025/12/14
 * Bump `flutter_secure_storage` to stable `10.x`
 
