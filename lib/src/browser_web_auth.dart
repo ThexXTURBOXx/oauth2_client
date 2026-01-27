@@ -11,7 +11,6 @@ class BrowserWebAuth implements BaseWebAuth {
       required String url,
       required String redirectUrl,
       Map<String, dynamic>? opts}) async {
-    // ignore: unsafe_html
     final popupLogin = web.window.open(url, 'oauth2_client::authenticateWindow',
         'menubar=no, status=no, scrollbars=no, menubar=no, width=1000, height=500');
 
