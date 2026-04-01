@@ -77,12 +77,13 @@ class OAuth2Helper {
     }
 
     if (!tknResp.isValid()) {
-      throw Exception(
-          'Provider error ${tknResp.httpStatusCode}: ${tknResp.error}: ${tknResp.errorDescription}');
+      throw OAuth2Exception(
+          'Provider error ${tknResp.httpStatusCode}: ${tknResp.error}',
+          errorDescription: tknResp.errorDescription);
     }
 
     if (!tknResp.isBearer()) {
-      throw Exception('Only Bearer tokens are currently supported');
+      throw OAuth2Exception('Only Bearer tokens are currently supported');
     }
 
     return tknResp;
@@ -285,7 +286,7 @@ class OAuth2Helper {
       } else if (method == 'HEAD') {
         resp = await httpClient!.head(Uri.parse(url), headers: headers);
       } else {
-        throw OAuth2Exception('Unknown method $method!');
+        throw OAuth2Exception('Unknown method!', errorDescription: method);
       }
 
       return resp;
@@ -350,12 +351,12 @@ class OAuth2Helper {
 
   void _validateAuthorizationParams() {
     if (clientId.isEmpty) {
-      throw Exception('Required "clientId" parameter not set');
+      throw OAuth2Exception('Required "clientId" parameter not set');
     }
 
     if (grantType == clientCredentials &&
         (clientSecret == null || clientSecret!.isEmpty)) {
-      throw Exception('Required "clientSecret" parameter not set');
+      throw OAuth2Exception('Required "clientSecret" parameter not set');
     }
   }
 }

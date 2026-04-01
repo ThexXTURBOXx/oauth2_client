@@ -1,3 +1,5 @@
+import 'package:oauth2_client/oauth2_exception.dart';
+
 /// Represents the response to an Authorization Request.
 /// see https://tools.ietf.org/html/rfc6749#page-26
 class AuthorizationResponse {
@@ -18,18 +20,18 @@ class AuthorizationResponse {
     if (error == null) {
       code = getQueryParam('code');
       if (code == null) {
-        throw Exception('Expected "code" parameter not found in response');
+        throw OAuth2Exception('Expected "code" parameter not found in response');
       }
 
       // Only validate the state if the checkState was actually supplied
       if (checkState != null && checkState.isNotEmpty) {
         state = getQueryParam('state');
         if (state == null) {
-          throw Exception('Expected "state" parameter not found in response');
+          throw OAuth2Exception('Expected "state" parameter not found in response');
         }
 
         if (state != checkState) {
-          throw Exception(
+          throw OAuth2Exception(
               '"state" parameter in response doesn\'t correspond to the expected value');
         }
       }

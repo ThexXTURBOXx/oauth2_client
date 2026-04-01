@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:oauth2_client/access_token_response.dart';
 import 'package:oauth2_client/authorization_response.dart';
+import 'package:oauth2_client/oauth2_exception.dart';
 import 'package:oauth2_client/oauth2_response.dart';
 import 'package:oauth2_client/src/oauth2_utils.dart';
 import 'package:random_string/random_string.dart';
@@ -116,7 +117,7 @@ class OAuth2Client {
       if (enableState) {
         final checkState = fragment['state'];
         if (state != checkState) {
-          throw Exception(
+          throw OAuth2Exception(
               '"state" parameter in response doesn\'t correspond to the expected value');
         }
       }
