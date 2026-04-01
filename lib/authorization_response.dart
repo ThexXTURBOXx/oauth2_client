@@ -20,14 +20,16 @@ class AuthorizationResponse {
     if (error == null) {
       code = getQueryParam('code');
       if (code == null) {
-        throw OAuth2Exception('Expected "code" parameter not found in response');
+        throw OAuth2Exception(
+            'Expected "code" parameter not found in response');
       }
 
       // Only validate the state if the checkState was actually supplied
       if (checkState != null && checkState.isNotEmpty) {
         state = getQueryParam('state');
         if (state == null) {
-          throw OAuth2Exception('Expected "state" parameter not found in response');
+          throw OAuth2Exception(
+              'Expected "state" parameter not found in response');
         }
 
         if (state != checkState) {
