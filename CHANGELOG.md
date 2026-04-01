@@ -1,3 +1,6 @@
+## [4.2.4] - 2026/04/01
+* Improve exceptions/errors
+
 ## [4.2.3] - 2026/01/13
 * Bump `flutter_web_auth_2` to stable `5.x`
 
