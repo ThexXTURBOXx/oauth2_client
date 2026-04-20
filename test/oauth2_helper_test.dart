@@ -198,6 +198,34 @@ void main() {
 
     test('Refresh token expiration', () async {
       final tokenStorage =
+      TokenStorage(oauth2Client.tokenUrl, storage: VolatileStorage());
+
+      mockGetTokenWithAuthCodeFlow(oauth2Client);
+
+      when(oauth2Client.refreshToken(refreshToken,
+          clientId: clientId, clientSecret: clientSecret))
+          .thenAnswer((_) async => AccessTokenResponse.fromMap(
+          {'error': 'invalid_grant', 'http_status_code': 400}));
+
+      var hlp = OAuth2Helper(oauth2Client,
+          grantType: OAuth2Helper.authorizationCode,
+          clientId: clientId,
+          clientSecret: clientSecret,
+          scopes: scopes,
+          tokenStorage: tokenStorage);
+
+      var tknResp = await hlp.refreshToken(AccessTokenResponse.fromMap({
+        'refresh_token': refreshToken,
+        'http_status_code': 200,
+        'access_token': accessToken
+      }));
+
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
+    });
+
+    test('Refresh token expiration (with invalid_request)', () async {
+      final tokenStorage =
           TokenStorage(oauth2Client.tokenUrl, storage: VolatileStorage());
 
       mockGetTokenWithAuthCodeFlow(oauth2Client);
@@ -205,7 +233,7 @@ void main() {
       when(oauth2Client.refreshToken(refreshToken,
               clientId: clientId, clientSecret: clientSecret))
           .thenAnswer((_) async => AccessTokenResponse.fromMap(
-              {'error': 'invalid_grant', 'http_status_code': 400}));
+              {'error': 'invalid_request', 'http_status_code': 400}));
 
       var hlp = OAuth2Helper(oauth2Client,
           grantType: OAuth2Helper.authorizationCode,
@@ -807,6 +835,35 @@ void main() {
               clientId: clientId, clientSecret: clientSecret))
           .thenAnswer((_) async => AccessTokenResponse.fromMap(
               {'error': 'invalid_grant', 'http_status_code': 400}));
+
+      var hlp = OAuth2Helper(oauth2Client,
+          grantType: OAuth2Helper.clientCredentials,
+          clientId: clientId,
+          clientSecret: clientSecret,
+          scopes: scopes,
+          tokenStorage: tokenStorage);
+
+      // var tknResp = await hlp.refreshToken(refreshToken);
+      var tknResp = await hlp.refreshToken(AccessTokenResponse.fromMap({
+        'refresh_token': refreshToken,
+        'http_status_code': 200,
+        'access_token': accessToken
+      }));
+
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
+    });
+
+    test('Refresh token expiration (with invalid_request)', () async {
+      final tokenStorage =
+      TokenStorage(oauth2Client.tokenUrl, storage: VolatileStorage());
+
+      mockGetTokenWithClientCredentials(oauth2Client);
+
+      when(oauth2Client.refreshToken(refreshToken,
+          clientId: clientId, clientSecret: clientSecret))
+          .thenAnswer((_) async => AccessTokenResponse.fromMap(
+          {'error': 'invalid_request', 'http_status_code': 400}));
 
       var hlp = OAuth2Helper(oauth2Client,
           grantType: OAuth2Helper.clientCredentials,

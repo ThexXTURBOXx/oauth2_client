@@ -161,7 +161,11 @@ class OAuth2Helper {
 
       await tokenStorage.addToken(tknResp);
     } else {
-      if (tknResp.error == 'invalid_grant') {
+      // invalid_grant is usually produced in this case.
+      // Some major backend providers (such as League/oauth2-server) seem
+      // to throw invalid_request errors as well, though...
+      if (tknResp.error == 'invalid_grant' ||
+          tknResp.error == 'invalid_request') {
         //The refresh token is expired too
         await tokenStorage.deleteToken(scopes ?? []);
         //Fetch another access token
