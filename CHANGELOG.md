@@ -1,3 +1,6 @@
+## [4.2.5] - 2026/04/20
+* Catch `invalid_request` errors in `refreshToken` (see also [#13](https://github.com/ThexXTURBOXx/oauth2_client/issues/13))
+
 ## [4.2.4] - 2026/04/01
 * Improve exceptions/errors
 
