@@ -1,3 +1,6 @@
+## [4.2.6] - 2026/04/22
+* Allow specifying http client in more functions
+
 ## [4.2.5] - 2026/04/20
 * Catch `invalid_request` errors in `refreshToken` (see also [#13](https://github.com/ThexXTURBOXx/oauth2_client/issues/13))
 
