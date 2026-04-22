@@ -86,7 +86,7 @@ class OAuth2Client {
       List<String>? scopes,
       bool enableState = true,
       String? state,
-      httpClient,
+      http.Client? httpClient,
       BaseWebAuth? webAuthClient,
       Map<String, dynamic>? webAuthOpts,
       Map<String, dynamic>? customParams}) async {
@@ -147,7 +147,7 @@ class OAuth2Client {
       Map<String, dynamic>? authCodeParams,
       Map<String, dynamic>? accessTokenParams,
       Map<String, String>? accessTokenHeaders,
-      httpClient,
+      http.Client? httpClient,
       BaseWebAuth? webAuthClient,
       Map<String, dynamic>? webAuthOpts}) async {
     AccessTokenResponse? tknResp;
@@ -203,7 +203,7 @@ class OAuth2Client {
       required String clientSecret,
       List<String>? scopes,
       Map<String, String>? customHeaders,
-      httpClient}) async {
+      http.Client? httpClient}) async {
     var params = <String, String>{'grant_type': 'client_credentials'};
 
     if (scopes != null && scopes.isNotEmpty) {
@@ -265,7 +265,7 @@ class OAuth2Client {
       List<String>? scopes,
       Map<String, dynamic>? customParams,
       Map<String, String>? customHeaders,
-      httpClient}) async {
+      http.Client? httpClient}) async {
     final params = getTokenUrlParams(
         code: code,
         redirectUri: redirectUri,
@@ -285,7 +285,7 @@ class OAuth2Client {
 
   /// Refreshes an Access Token issuing a refresh_token grant to the OAuth2 server.
   Future<AccessTokenResponse> refreshToken(String refreshToken,
-      {httpClient,
+      {http.Client? httpClient,
       required String clientId,
       String? clientSecret,
       List<String>? scopes}) async {
@@ -306,7 +306,7 @@ class OAuth2Client {
     AccessTokenResponse tknResp, {
     String? clientId,
     String? clientSecret,
-    httpClient,
+    http.Client? httpClient,
     Map<String, dynamic>? params,
   }) async {
     var tokenRevocationResp = await revokeAccessToken(tknResp,
@@ -330,7 +330,7 @@ class OAuth2Client {
     AccessTokenResponse tknResp, {
     String? clientId,
     String? clientSecret,
-    httpClient,
+    http.Client? httpClient,
     Map<String, dynamic>? params,
   }) async {
     return await _revokeTokenByType(tknResp, 'access_token',
@@ -345,7 +345,7 @@ class OAuth2Client {
     AccessTokenResponse tknResp, {
     String? clientId,
     String? clientSecret,
-    httpClient,
+    http.Client? httpClient,
     Map<String, dynamic>? params,
   }) async {
     return await _revokeTokenByType(tknResp, 'refresh_token',
@@ -437,7 +437,7 @@ class OAuth2Client {
       String? clientSecret,
       Map? params,
       Map<String, String>? headers,
-      httpClient}) async {
+      http.Client? httpClient}) async {
     httpClient ??= http.Client();
 
     headers = {
@@ -517,7 +517,7 @@ class OAuth2Client {
     String tokenType, {
     String? clientId,
     String? clientSecret,
-    httpClient,
+    http.Client? httpClient,
     Map<String, dynamic>? params,
   }) async {
     var resp = OAuth2Response();

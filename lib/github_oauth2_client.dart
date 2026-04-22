@@ -1,3 +1,4 @@
+import 'package:http/http.dart' as http;
 import 'package:oauth2_client/access_token_response.dart';
 import 'package:oauth2_client/oauth2_client.dart';
 
@@ -27,7 +28,7 @@ class GitHubOAuth2Client extends OAuth2Client {
       Map<String, dynamic>? authCodeParams,
       Map<String, dynamic>? accessTokenParams,
       Map<String, String>? accessTokenHeaders,
-      httpClient,
+      http.Client? httpClient,
       BaseWebAuth? webAuthClient,
       Map<String, dynamic>? webAuthOpts}) async {
     return super.getTokenWithAuthCodeFlow(

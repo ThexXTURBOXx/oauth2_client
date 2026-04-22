@@ -57,7 +57,7 @@ class OAuth2Helper {
   /// Returns a previously required token, if any, or requires a new one.
   ///
   /// If a token already exists but is expired, a new token is generated through the refresh_token grant.
-  Future<AccessTokenResponse?> getToken() async {
+  Future<AccessTokenResponse?> getToken({http.Client? httpClient}) async {
     _validateAuthorizationParams();
 
     var tknResp = await getTokenFromStorage();
@@ -66,14 +66,14 @@ class OAuth2Helper {
       if (tknResp.refreshNeeded()) {
         //The access token is expired
         if (tknResp.hasRefreshToken()) {
-          tknResp = await refreshToken(tknResp);
+          tknResp = await refreshToken(tknResp, httpClient: httpClient);
         } else {
           //No refresh token, fetch a new token
-          tknResp = await fetchToken();
+          tknResp = await fetchToken(httpClient: httpClient);
         }
       }
     } else {
-      tknResp = await fetchToken();
+      tknResp = await fetchToken(httpClient: httpClient);
     }
 
     if (!tknResp.isValid()) {
@@ -95,7 +95,7 @@ class OAuth2Helper {
   }
 
   /// Fetches a new token and saves it in the storage
-  Future<AccessTokenResponse> fetchToken() async {
+  Future<AccessTokenResponse> fetchToken({http.Client? httpClient}) async {
     _validateAuthorizationParams();
 
     AccessTokenResponse tknResp;
@@ -112,14 +112,16 @@ class OAuth2Helper {
           accessTokenHeaders: accessTokenHeaders,
           afterAuthorizationCodeCb: afterAuthorizationCodeCb,
           webAuthClient: webAuthClient,
-          webAuthOpts: webAuthOpts);
+          webAuthOpts: webAuthOpts,
+          httpClient: httpClient);
     } else if (grantType == clientCredentials) {
       tknResp = await client.getTokenWithClientCredentialsFlow(
           clientId: clientId,
           //The clientSecret param can't be null at this point... It has been validated by the above _validateAuthorizationParams call...
           clientSecret: clientSecret!,
           customHeaders: accessTokenHeaders,
-          scopes: scopes);
+          scopes: scopes,
+          httpClient: httpClient);
     } else if (grantType == implicitGrant) {
       tknResp = await client.getTokenWithImplicitGrantFlow(
           clientId: clientId,
@@ -127,7 +129,8 @@ class OAuth2Helper {
           enableState: enableState,
           webAuthClient: webAuthClient,
           webAuthOpts: webAuthOpts,
-          customParams: authCodeParams);
+          customParams: authCodeParams,
+          httpClient: httpClient);
     } else {
       tknResp = AccessTokenResponse.errorResponse();
     }
@@ -140,17 +143,18 @@ class OAuth2Helper {
   }
 
   /// Performs a refresh_token request using the [refreshToken].
-  Future<AccessTokenResponse> refreshToken(
-      AccessTokenResponse curTknResp) async {
+  Future<AccessTokenResponse> refreshToken(AccessTokenResponse curTknResp,
+      {http.Client? httpClient}) async {
     AccessTokenResponse? tknResp;
     var refreshToken = curTknResp.refreshToken!;
     try {
       tknResp = await client.refreshToken(refreshToken,
           clientId: clientId,
           clientSecret: clientSecret,
-          scopes: curTknResp.scope);
+          scopes: curTknResp.scope,
+          httpClient: httpClient);
     } catch (_) {
-      return await fetchToken();
+      return await fetchToken(httpClient: httpClient);
     }
 
     if (tknResp.isValid()) {
@@ -169,7 +173,7 @@ class OAuth2Helper {
         //The refresh token is expired too
         await tokenStorage.deleteToken(scopes ?? []);
         //Fetch another access token
-        tknResp = await getToken();
+        tknResp = await getToken(httpClient: httpClient);
       } else {
         throw OAuth2Exception(tknResp.error ?? 'Error',
             errorDescription: tknResp.errorDescription);
@@ -296,7 +300,7 @@ class OAuth2Helper {
       return resp;
     }
 
-    return _supplyToken(sendRequest);
+    return _supplyToken(sendRequest, httpClient: httpClient);
   }
 
   /// Performs the given request, adding the authorization token.
@@ -320,16 +324,17 @@ class OAuth2Helper {
       return await httpClient!.send(request);
     }
 
-    return _supplyToken(sendRequest);
+    return _supplyToken(sendRequest, httpClient: httpClient);
   }
 
   /// Supplies the token to the given requester function
   Future<Response> _supplyToken<Response extends http.BaseResponse>(
-      Future<Response> Function(dynamic accessToken) sendRequest) async {
+      Future<Response> Function(dynamic accessToken) sendRequest,
+      {http.Client? httpClient}) async {
     Response resp;
 
     //Retrieve the current token, or fetches a new one if it is expired
-    var tknResp = await getToken();
+    var tknResp = await getToken(httpClient: httpClient);
 
     try {
       resp = await sendRequest(tknResp!.accessToken);
@@ -338,9 +343,9 @@ class OAuth2Helper {
         //The token could have been invalidated on the server side
         //Try to fetch a new token...
         if (tknResp.hasRefreshToken()) {
-          tknResp = await refreshToken(tknResp);
+          tknResp = await refreshToken(tknResp, httpClient: httpClient);
         } else {
-          tknResp = await fetchToken();
+          tknResp = await fetchToken(httpClient: httpClient);
         }
 
         if (tknResp.isValid()) {
