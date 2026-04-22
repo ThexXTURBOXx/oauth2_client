@@ -19,7 +19,9 @@ class OAuth2Helper {
   static const implicitGrant = 3;
 
   final OAuth2Client client;
-  late TokenStorage tokenStorage;
+
+  http.Client? httpClient;
+  TokenStorage tokenStorage;
 
   int grantType;
   String clientId;
@@ -50,14 +52,16 @@ class OAuth2Helper {
       this.accessTokenParams,
       this.accessTokenHeaders,
       this.webAuthClient,
-      this.webAuthOpts}) {
-    this.tokenStorage = tokenStorage ?? TokenStorage(client.tokenUrl);
-  }
+      this.webAuthOpts,
+      this.httpClient})
+      : tokenStorage = tokenStorage ?? TokenStorage(client.tokenUrl);
 
   /// Returns a previously required token, if any, or requires a new one.
   ///
   /// If a token already exists but is expired, a new token is generated through the refresh_token grant.
   Future<AccessTokenResponse?> getToken({http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     _validateAuthorizationParams();
 
     var tknResp = await getTokenFromStorage();
@@ -96,6 +100,8 @@ class OAuth2Helper {
 
   /// Fetches a new token and saves it in the storage
   Future<AccessTokenResponse> fetchToken({http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     _validateAuthorizationParams();
 
     AccessTokenResponse tknResp;
@@ -145,6 +151,8 @@ class OAuth2Helper {
   /// Performs a refresh_token request using the [refreshToken].
   Future<AccessTokenResponse> refreshToken(AccessTokenResponse curTknResp,
       {http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     AccessTokenResponse? tknResp;
     var refreshToken = curTknResp.refreshToken!;
     try {
@@ -185,7 +193,7 @@ class OAuth2Helper {
 
   /// Revokes the previously fetched token
   Future<OAuth2Response> disconnect({http.Client? httpClient}) async {
-    httpClient ??= http.Client();
+    httpClient ??= this.httpClient;
 
     final tknResp = await tokenStorage.getToken(scopes ?? []);
 
@@ -211,6 +219,8 @@ class OAuth2Helper {
       {Map<String, String>? headers,
       dynamic body,
       http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     return _request('POST', url,
         headers: headers, body: body, httpClient: httpClient);
   }
@@ -222,6 +232,8 @@ class OAuth2Helper {
       {Map<String, String>? headers,
       dynamic body,
       http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     return _request('PUT', url,
         headers: headers, body: body, httpClient: httpClient);
   }
@@ -233,6 +245,8 @@ class OAuth2Helper {
       {Map<String, String>? headers,
       dynamic body,
       http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     return _request('PATCH', url,
         headers: headers, body: body, httpClient: httpClient);
   }
@@ -242,6 +256,8 @@ class OAuth2Helper {
   /// If no token already exists, or if it is expired, a new one is requested.
   Future<http.Response> get(String url,
       {Map<String, String>? headers, http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     return _request('GET', url, headers: headers, httpClient: httpClient);
   }
 
@@ -250,6 +266,8 @@ class OAuth2Helper {
   /// If no token already exists, or if it is expired, a new one is requested.
   Future<http.Response> delete(String url,
       {Map<String, String>? headers, http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     return _request('DELETE', url, headers: headers, httpClient: httpClient);
   }
 
@@ -260,6 +278,8 @@ class OAuth2Helper {
       {Map<String, String>? headers,
       dynamic body,
       http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     return _request('HEAD', url, headers: headers, httpClient: httpClient);
   }
 
@@ -269,7 +289,7 @@ class OAuth2Helper {
       {Map<String, String>? headers,
       dynamic body,
       http.Client? httpClient}) async {
-    httpClient ??= http.Client();
+    httpClient ??= this.httpClient ?? http.Client();
 
     headers ??= {};
 
@@ -308,6 +328,8 @@ class OAuth2Helper {
   /// If no token already exists, or if it is expired, a new one is requested.
   Future<http.StreamedResponse> send(http.BaseRequest request,
       {http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     return _send(request, httpClient: httpClient);
   }
 
@@ -315,7 +337,7 @@ class OAuth2Helper {
   /// Tries to use a previously fetched token, otherwise fetches a new token by means of a refresh flow or by issuing a new authorization flow
   Future<http.StreamedResponse> _send(http.BaseRequest request,
       {http.Client? httpClient}) async {
-    httpClient ??= http.Client();
+    httpClient ??= this.httpClient ?? http.Client();
 
     sendRequest(accessToken) async {
       // Yes, it is sub-optimal that the header is changed directly like this,
@@ -331,6 +353,8 @@ class OAuth2Helper {
   Future<Response> _supplyToken<Response extends http.BaseResponse>(
       Future<Response> Function(dynamic accessToken) sendRequest,
       {http.Client? httpClient}) async {
+    httpClient ??= this.httpClient;
+
     Response resp;
 
     //Retrieve the current token, or fetches a new one if it is expired
