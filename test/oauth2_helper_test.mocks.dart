@@ -31,6 +31,7 @@ import 'package:oauth2_client/src/token_storage.dart' as _i13;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
+// ignore_for_file: invalid_use_of_internal_member
 
 class _FakeBaseWebAuth_0 extends _i1.SmartFake implements _i2.BaseWebAuth {
   _FakeBaseWebAuth_0(
@@ -193,101 +194,100 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
       ) as _i8.CredentialsLocation);
 
   @override
-  set redirectUri(String? _redirectUri) => super.noSuchMethod(
+  set redirectUri(String? value) => super.noSuchMethod(
         Invocation.setter(
           #redirectUri,
-          _redirectUri,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set customUriScheme(String? _customUriScheme) => super.noSuchMethod(
+  set customUriScheme(String? value) => super.noSuchMethod(
         Invocation.setter(
           #customUriScheme,
-          _customUriScheme,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set tokenUrl(String? _tokenUrl) => super.noSuchMethod(
+  set tokenUrl(String? value) => super.noSuchMethod(
         Invocation.setter(
           #tokenUrl,
-          _tokenUrl,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set refreshUrl(String? _refreshUrl) => super.noSuchMethod(
+  set refreshUrl(String? value) => super.noSuchMethod(
         Invocation.setter(
           #refreshUrl,
-          _refreshUrl,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set revokeUrl(String? _revokeUrl) => super.noSuchMethod(
+  set revokeUrl(String? value) => super.noSuchMethod(
         Invocation.setter(
           #revokeUrl,
-          _revokeUrl,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set authorizeUrl(String? _authorizeUrl) => super.noSuchMethod(
+  set authorizeUrl(String? value) => super.noSuchMethod(
         Invocation.setter(
           #authorizeUrl,
-          _authorizeUrl,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set scopeSeparator(String? _scopeSeparator) => super.noSuchMethod(
+  set scopeSeparator(String? value) => super.noSuchMethod(
         Invocation.setter(
           #scopeSeparator,
-          _scopeSeparator,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set clientIdKey(String? _clientIdKey) => super.noSuchMethod(
+  set clientIdKey(String? value) => super.noSuchMethod(
         Invocation.setter(
           #clientIdKey,
-          _clientIdKey,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set clientSecretKey(String? _clientSecretKey) => super.noSuchMethod(
+  set clientSecretKey(String? value) => super.noSuchMethod(
         Invocation.setter(
           #clientSecretKey,
-          _clientSecretKey,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set webAuthClient(_i2.BaseWebAuth? _webAuthClient) => super.noSuchMethod(
+  set webAuthClient(_i2.BaseWebAuth? value) => super.noSuchMethod(
         Invocation.setter(
           #webAuthClient,
-          _webAuthClient,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set credentialsLocation(_i8.CredentialsLocation? _credentialsLocation) =>
-      super.noSuchMethod(
+  set credentialsLocation(_i8.CredentialsLocation? value) => super.noSuchMethod(
         Invocation.setter(
           #credentialsLocation,
-          _credentialsLocation,
+          value,
         ),
         returnValueForMissingStub: null,
       );
@@ -298,7 +298,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     List<String>? scopes,
     bool? enableState = true,
     String? state,
-    dynamic httpClient,
+    _i6.Client? httpClient,
     _i2.BaseWebAuth? webAuthClient,
     Map<String, dynamic>? webAuthOpts,
     Map<String, dynamic>? customParams,
@@ -351,7 +351,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     Map<String, dynamic>? authCodeParams,
     Map<String, dynamic>? accessTokenParams,
     Map<String, String>? accessTokenHeaders,
-    dynamic httpClient,
+    _i6.Client? httpClient,
     _i2.BaseWebAuth? webAuthClient,
     Map<String, dynamic>? webAuthOpts,
   }) =>
@@ -408,7 +408,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     required String? clientSecret,
     List<String>? scopes,
     Map<String, String>? customHeaders,
-    dynamic httpClient,
+    _i6.Client? httpClient,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -494,7 +494,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     List<String>? scopes,
     Map<String, dynamic>? customParams,
     Map<String, String>? customHeaders,
-    dynamic httpClient,
+    _i6.Client? httpClient,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -534,7 +534,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
   @override
   _i10.Future<_i3.AccessTokenResponse> refreshToken(
     String? refreshToken, {
-    dynamic httpClient,
+    _i6.Client? httpClient,
     required String? clientId,
     String? clientSecret,
     List<String>? scopes,
@@ -571,7 +571,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     _i3.AccessTokenResponse? tknResp, {
     String? clientId,
     String? clientSecret,
-    dynamic httpClient,
+    _i6.Client? httpClient,
     Map<String, dynamic>? params,
   }) =>
       (super.noSuchMethod(
@@ -606,7 +606,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     _i3.AccessTokenResponse? tknResp, {
     String? clientId,
     String? clientSecret,
-    dynamic httpClient,
+    _i6.Client? httpClient,
     Map<String, dynamic>? params,
   }) =>
       (super.noSuchMethod(
@@ -641,7 +641,7 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     _i3.AccessTokenResponse? tknResp, {
     String? clientId,
     String? clientSecret,
-    dynamic httpClient,
+    _i6.Client? httpClient,
     Map<String, dynamic>? params,
   }) =>
       (super.noSuchMethod(
@@ -1065,19 +1065,19 @@ class MockTokenStorage extends _i1.Mock implements _i13.TokenStorage {
       ) as _i7.BaseStorage);
 
   @override
-  set key(String? _key) => super.noSuchMethod(
+  set key(String? value) => super.noSuchMethod(
         Invocation.setter(
           #key,
-          _key,
+          value,
         ),
         returnValueForMissingStub: null,
       );
 
   @override
-  set storage(_i7.BaseStorage? _storage) => super.noSuchMethod(
+  set storage(_i7.BaseStorage? value) => super.noSuchMethod(
         Invocation.setter(
           #storage,
-          _storage,
+          value,
         ),
         returnValueForMissingStub: null,
       );

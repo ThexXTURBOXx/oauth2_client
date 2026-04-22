@@ -50,7 +50,10 @@ void main() {
     }
 
     when(oauth2Client.getTokenWithAuthCodeFlow(
-            clientId: clientId, clientSecret: clientSecret, scopes: scopes))
+            clientId: clientId,
+            clientSecret: clientSecret,
+            scopes: scopes,
+            httpClient: httpClient))
         .thenAnswer((_) async => AccessTokenResponse.fromMap(accessTokenMap));
   }
 
@@ -74,7 +77,10 @@ void main() {
         .millisecondsSinceEpoch;
 
     when(oauth2Client.getTokenWithClientCredentialsFlow(
-            clientId: clientId, clientSecret: clientSecret, scopes: scopes))
+            clientId: clientId,
+            clientSecret: clientSecret,
+            scopes: scopes,
+            httpClient: httpClient))
         .thenAnswer((_) async => AccessTokenResponse.fromMap(accessTokenMap));
   }
 
@@ -93,13 +99,16 @@ void main() {
     }
 
     when(oauth2Client.getTokenWithImplicitGrantFlow(
-            clientId: clientId, scopes: scopes))
+            clientId: clientId, scopes: scopes, httpClient: httpClient))
         .thenAnswer((_) async => AccessTokenResponse.fromMap(accessTokenMap));
   }
 
   void mockRefreshToken(oauth2Client) {
     when(oauth2Client.refreshToken(refreshToken,
-            clientId: clientId, clientSecret: clientSecret, scopes: scopes))
+            clientId: clientId,
+            clientSecret: clientSecret,
+            scopes: scopes,
+            httpClient: httpClient))
         .thenAnswer((_) async => AccessTokenResponse.fromMap({
               'access_token': renewedAccessToken,
               'token_type': tokenType,
@@ -124,7 +133,7 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
@@ -149,13 +158,13 @@ void main() {
           clientSecret: clientSecret,
           scopes: scopes,
           tokenStorage: tokenStorage);
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
 
       await Future.delayed(const Duration(seconds: 2), () => 'X');
 
-      tknResp = await hlp.getToken();
+      tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, renewedAccessToken);
@@ -184,13 +193,13 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
 
       await hlp.post('https://my.test.url', httpClient: httpClient);
-      tknResp = await hlp.getToken();
+      tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, renewedAccessToken);
@@ -203,7 +212,9 @@ void main() {
       mockGetTokenWithAuthCodeFlow(oauth2Client);
 
       when(oauth2Client.refreshToken(refreshToken,
-              clientId: clientId, clientSecret: clientSecret))
+              clientId: clientId,
+              clientSecret: clientSecret,
+              httpClient: httpClient))
           .thenAnswer((_) async => AccessTokenResponse.fromMap(
               {'error': 'invalid_grant', 'http_status_code': 400}));
 
@@ -214,11 +225,13 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      var tknResp = await hlp.refreshToken(AccessTokenResponse.fromMap({
-        'refresh_token': refreshToken,
-        'http_status_code': 200,
-        'access_token': accessToken
-      }));
+      var tknResp = await hlp.refreshToken(
+          AccessTokenResponse.fromMap({
+            'refresh_token': refreshToken,
+            'http_status_code': 200,
+            'access_token': accessToken
+          }),
+          httpClient: httpClient);
 
       expect(tknResp.isValid(), true);
       expect(tknResp.accessToken, accessToken);
@@ -231,7 +244,9 @@ void main() {
       mockGetTokenWithAuthCodeFlow(oauth2Client);
 
       when(oauth2Client.refreshToken(refreshToken,
-              clientId: clientId, clientSecret: clientSecret))
+              clientId: clientId,
+              clientSecret: clientSecret,
+              httpClient: httpClient))
           .thenAnswer((_) async => AccessTokenResponse.fromMap(
               {'error': 'invalid_request', 'http_status_code': 400}));
 
@@ -242,11 +257,13 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      var tknResp = await hlp.refreshToken(AccessTokenResponse.fromMap({
-        'refresh_token': refreshToken,
-        'http_status_code': 200,
-        'access_token': accessToken
-      }));
+      var tknResp = await hlp.refreshToken(
+          AccessTokenResponse.fromMap({
+            'refresh_token': refreshToken,
+            'http_status_code': 200,
+            'access_token': accessToken
+          }),
+          httpClient: httpClient);
 
       expect(tknResp.isValid(), true);
       expect(tknResp.accessToken, accessToken);
@@ -271,13 +288,13 @@ void main() {
           .thenAnswer(
               (_) async => http.Response('{"error": "invalid_token"}', 401));
 
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
 
       await hlp.get('https://my.test.url', httpClient: httpClient);
-      tknResp = await hlp.getToken();
+      tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, renewedAccessToken);
@@ -290,7 +307,9 @@ void main() {
       mockGetTokenWithAuthCodeFlow(oauth2Client);
 
       when(oauth2Client.refreshToken(refreshToken,
-              clientId: clientId, clientSecret: clientSecret))
+              clientId: clientId,
+              clientSecret: clientSecret,
+              httpClient: httpClient))
           .thenAnswer((_) async => AccessTokenResponse.fromMap(
               {'error': 'generic_error', 'http_status_code': 400}));
 
@@ -303,11 +322,13 @@ void main() {
 
       // expect(() async => await hlp.refreshToken(refreshToken),
       expect(
-          () async => await hlp.refreshToken(AccessTokenResponse.fromMap({
+          () async => await hlp.refreshToken(
+              AccessTokenResponse.fromMap({
                 'refresh_token': refreshToken,
                 'http_status_code': 200,
                 'access_token': accessToken
-              })),
+              }),
+              httpClient: httpClient),
           throwsA(isInstanceOf<OAuth2Exception>()));
     });
 
@@ -671,6 +692,7 @@ void main() {
         clientSecret: 'test_secret',
         enablePKCE: false,
         enableState: true,
+        httpClient: httpClient,
       )).thenAnswer((_) async => AccessTokenResponse());
 
       var hlp = OAuth2Helper(oauth2Client,
@@ -680,7 +702,7 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      await hlp.fetchToken();
+      await hlp.fetchToken(httpClient: httpClient);
 
       expect(
           verify(oauth2Client.getTokenWithAuthCodeFlow(
@@ -701,7 +723,7 @@ void main() {
 
       hlp.enablePKCE = true;
 
-      await hlp.fetchToken();
+      await hlp.fetchToken(httpClient: httpClient);
 
       expect(
           verify(oauth2Client.getTokenWithAuthCodeFlow(
@@ -723,7 +745,7 @@ void main() {
       //enablePKCE param passed as false... Must be false in the client instance
       hlp.enablePKCE = false;
 
-      await hlp.fetchToken();
+      await hlp.fetchToken(httpClient: httpClient);
 
       expect(
           verify(oauth2Client.getTokenWithAuthCodeFlow(
@@ -758,7 +780,7 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
@@ -780,14 +802,14 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
 
       await Future.delayed(const Duration(seconds: 2), () => 'X');
 
-      tknResp = await hlp.getToken();
+      tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, renewedAccessToken);
@@ -813,13 +835,13 @@ void main() {
           .thenAnswer(
               (_) async => http.Response('{"error": "invalid_token"}', 401));
 
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
 
       await hlp.post('https://my.test.url', httpClient: httpClient);
-      tknResp = await hlp.getToken();
+      tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, renewedAccessToken);
@@ -832,7 +854,9 @@ void main() {
       mockGetTokenWithClientCredentials(oauth2Client);
 
       when(oauth2Client.refreshToken(refreshToken,
-              clientId: clientId, clientSecret: clientSecret))
+              clientId: clientId,
+              clientSecret: clientSecret,
+              httpClient: httpClient))
           .thenAnswer((_) async => AccessTokenResponse.fromMap(
               {'error': 'invalid_grant', 'http_status_code': 400}));
 
@@ -844,11 +868,13 @@ void main() {
           tokenStorage: tokenStorage);
 
       // var tknResp = await hlp.refreshToken(refreshToken);
-      var tknResp = await hlp.refreshToken(AccessTokenResponse.fromMap({
-        'refresh_token': refreshToken,
-        'http_status_code': 200,
-        'access_token': accessToken
-      }));
+      var tknResp = await hlp.refreshToken(
+          AccessTokenResponse.fromMap({
+            'refresh_token': refreshToken,
+            'http_status_code': 200,
+            'access_token': accessToken
+          }),
+          httpClient: httpClient);
 
       expect(tknResp.isValid(), true);
       expect(tknResp.accessToken, accessToken);
@@ -861,7 +887,9 @@ void main() {
       mockGetTokenWithClientCredentials(oauth2Client);
 
       when(oauth2Client.refreshToken(refreshToken,
-              clientId: clientId, clientSecret: clientSecret))
+              clientId: clientId,
+              clientSecret: clientSecret,
+              httpClient: httpClient))
           .thenAnswer((_) async => AccessTokenResponse.fromMap(
               {'error': 'invalid_request', 'http_status_code': 400}));
 
@@ -873,11 +901,13 @@ void main() {
           tokenStorage: tokenStorage);
 
       // var tknResp = await hlp.refreshToken(refreshToken);
-      var tknResp = await hlp.refreshToken(AccessTokenResponse.fromMap({
-        'refresh_token': refreshToken,
-        'http_status_code': 200,
-        'access_token': accessToken
-      }));
+      var tknResp = await hlp.refreshToken(
+          AccessTokenResponse.fromMap({
+            'refresh_token': refreshToken,
+            'http_status_code': 200,
+            'access_token': accessToken
+          }),
+          httpClient: httpClient);
 
       expect(tknResp.isValid(), true);
       expect(tknResp.accessToken, accessToken);
@@ -892,7 +922,9 @@ void main() {
       mockGetTokenWithClientCredentials(oauth2Client);
 
       when(oauth2Client.refreshToken(refreshToken,
-              clientId: clientId, clientSecret: clientSecret))
+              clientId: clientId,
+              clientSecret: clientSecret,
+              httpClient: httpClient))
           .thenAnswer((_) async => AccessTokenResponse.fromMap({
                 'access_token': accessToken,
                 'token_type': tokenType,
@@ -911,11 +943,13 @@ void main() {
           tokenStorage: tokenStorage);
 
       // var tknResp = await hlp.refreshToken(refreshToken);
-      var tknResp = await hlp.refreshToken(AccessTokenResponse.fromMap({
-        'refresh_token': refreshToken,
-        'http_status_code': 200,
-        'access_token': accessToken
-      }));
+      var tknResp = await hlp.refreshToken(
+          AccessTokenResponse.fromMap({
+            'refresh_token': refreshToken,
+            'http_status_code': 200,
+            'access_token': accessToken
+          }),
+          httpClient: httpClient);
 
       expect(tknResp.isValid(), true);
       expect(tknResp.refreshToken, refreshToken);
@@ -935,7 +969,7 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
 
-      var tknResp = await hlp.getToken();
+      var tknResp = await hlp.getToken(httpClient: httpClient);
 
       expect(tknResp?.isValid(), true);
       expect(tknResp?.accessToken, accessToken);
