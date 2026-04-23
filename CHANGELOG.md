@@ -1,3 +1,7 @@
+## [4.3.1] - 2026/04/23
+* Cleanup token handling
+* Improve even more error messages
+
 ## [4.3.0] - 2026/04/22
 * Allow specifying a default http client in `OAuth2Helper`
 * Allow specifying a dedicated http client in more functions
