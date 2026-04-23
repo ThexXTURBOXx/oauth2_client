@@ -59,7 +59,7 @@ class OAuth2Helper {
   /// Returns a previously required token, if any, or requires a new one.
   ///
   /// If a token already exists but is expired, a new token is generated through the refresh_token grant.
-  Future<AccessTokenResponse?> getToken({http.Client? httpClient}) async {
+  Future<AccessTokenResponse> getToken({http.Client? httpClient}) async {
     httpClient ??= this.httpClient;
 
     _validateAuthorizationParams();
@@ -149,12 +149,13 @@ class OAuth2Helper {
   }
 
   /// Performs a refresh_token request using the [refreshToken].
+  /// `curTknResp` must contain a valid `refreshToken`.
   Future<AccessTokenResponse> refreshToken(AccessTokenResponse curTknResp,
       {http.Client? httpClient}) async {
     httpClient ??= this.httpClient;
 
-    AccessTokenResponse? tknResp;
-    var refreshToken = curTknResp.refreshToken!;
+    AccessTokenResponse tknResp;
+    final refreshToken = curTknResp.refreshToken!;
     try {
       tknResp = await client.refreshToken(refreshToken,
           clientId: clientId,
@@ -188,7 +189,7 @@ class OAuth2Helper {
       }
     }
 
-    return tknResp!;
+    return tknResp;
   }
 
   /// Revokes the previously fetched token
@@ -361,7 +362,7 @@ class OAuth2Helper {
     var tknResp = await getToken(httpClient: httpClient);
 
     try {
-      resp = await sendRequest(tknResp!.accessToken);
+      resp = await sendRequest(tknResp.accessToken);
 
       if (resp.statusCode == 401) {
         //The token could have been invalidated on the server side

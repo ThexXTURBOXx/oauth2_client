@@ -135,8 +135,8 @@ void main() {
 
       var tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
     });
 
     test('Authorization Request with token expiration', () async {
@@ -159,15 +159,15 @@ void main() {
           scopes: scopes,
           tokenStorage: tokenStorage);
       var tknResp = await hlp.getToken(httpClient: httpClient);
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
 
       await Future.delayed(const Duration(seconds: 2), () => 'X');
 
       tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, renewedAccessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, renewedAccessToken);
     });
 
     test('Post authorization Request with server side token expiration',
@@ -195,14 +195,14 @@ void main() {
 
       var tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
 
       await hlp.post('https://my.test.url', httpClient: httpClient);
       tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, renewedAccessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, renewedAccessToken);
     });
 
     test('Refresh token expiration', () async {
@@ -290,14 +290,14 @@ void main() {
 
       var tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
 
       await hlp.get('https://my.test.url', httpClient: httpClient);
       tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, renewedAccessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, renewedAccessToken);
     });
 
     test('Refresh token generic error', () async {
@@ -782,8 +782,8 @@ void main() {
 
       var tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
     });
 
     test('Client Credentials with token expiration', () async {
@@ -804,15 +804,15 @@ void main() {
 
       var tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
 
       await Future.delayed(const Duration(seconds: 2), () => 'X');
 
       tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, renewedAccessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, renewedAccessToken);
     });
 
     test('Client Credentials Request with server side token expiration',
@@ -837,14 +837,14 @@ void main() {
 
       var tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
 
       await hlp.post('https://my.test.url', httpClient: httpClient);
       tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, renewedAccessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, renewedAccessToken);
     });
 
     test('Refresh token expiration', () async {
@@ -971,8 +971,8 @@ void main() {
 
       var tknResp = await hlp.getToken(httpClient: httpClient);
 
-      expect(tknResp?.isValid(), true);
-      expect(tknResp?.accessToken, accessToken);
+      expect(tknResp.isValid(), true);
+      expect(tknResp.accessToken, accessToken);
     });
   });
 }
