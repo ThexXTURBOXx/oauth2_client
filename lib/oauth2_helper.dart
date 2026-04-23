@@ -138,7 +138,8 @@ class OAuth2Helper {
           customParams: authCodeParams,
           httpClient: httpClient);
     } else {
-      tknResp = AccessTokenResponse.errorResponse();
+      tknResp = AccessTokenResponse.errorResponse(
+          error: 'Invalid grantType ($grantType)');
     }
 
     if (tknResp.isValid()) {

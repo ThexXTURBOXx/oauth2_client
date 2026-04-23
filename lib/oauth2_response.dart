@@ -5,13 +5,6 @@ import 'package:http/http.dart' as http;
 /// Represents the base response for the OAuth 2 requests.
 /// see https://tools.ietf.org/html/rfc6749#section-5.2
 class OAuth2Response {
-  // String? error;
-  // String? errorDescription;
-  // String? errorUri;
-  // late int httpStatusCode;
-
-  // DateTime ts = DateTime.now();
-
   Map<String, dynamic> respMap = {};
 
   OAuth2Response();
@@ -20,8 +13,17 @@ class OAuth2Response {
     respMap = map;
   }
 
-  OAuth2Response.errorResponse() {
-    respMap = {'http_status_code': 404};
+  OAuth2Response.errorResponse(
+      {int httpStatusCode = 404,
+      String? error,
+      String? errorDescription,
+      String? errorUri}) {
+    respMap = {
+      'http_status_code': httpStatusCode,
+      'error': error,
+      'error_description': errorDescription,
+      'errorUri': errorUri
+    };
   }
 
   factory OAuth2Response.fromHttpResponse(http.Response response) {
@@ -36,38 +38,10 @@ class OAuth2Response {
     }
 
     return resp;
-
-/*
-    OAuth2Response resp;
-
-    if (response.statusCode != 404) {
-      if (response.body != '') {
-        resp = OAuth2Response.fromMap({
-          ...jsonDecode(response.body),
-          ...{'httpStatusCode': response.statusCode}
-        });
-      } else {
-        resp = OAuth2Response();
-      }
-    } else {
-      // resp = OAuth2Response();
-      resp = OAuth2Response.errorResponse();
-    }
-
-    return resp;
-*/
   }
 
   Map<String, dynamic> toMap() {
     return respMap;
-/*
-    return {
-      'http_status_code': httpStatusCode,
-      'error': error,
-      'errorDescription': errorDescription,
-      'errorUri': errorUri
-    };
-*/
   }
 
   dynamic getRespField(String fieldName) {

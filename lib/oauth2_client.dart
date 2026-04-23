@@ -129,8 +129,10 @@ class OAuth2Client {
         'expires_in': fragment['expires_in'],
         'http_status_code': 200
       });
-    } on PlatformException {
-      return AccessTokenResponse.errorResponse();
+    } on PlatformException catch (e) {
+      return AccessTokenResponse.errorResponse(
+          error: 'PlatformException',
+          errorDescription: '${e.message} (${e.code})');
     }
   }
 
@@ -188,10 +190,12 @@ class OAuth2Client {
             customParams: accessTokenParams,
             customHeaders: accessTokenHeaders);
       } else {
-        tknResp = AccessTokenResponse.errorResponse();
+        tknResp = AccessTokenResponse.errorResponse(error: authResp.error);
       }
-    } on PlatformException {
-      tknResp = AccessTokenResponse.errorResponse();
+    } on PlatformException catch (e) {
+      return AccessTokenResponse.errorResponse(
+          error: 'PlatformException',
+          errorDescription: '${e.message} (${e.code})');
     }
 
     return tknResp;
