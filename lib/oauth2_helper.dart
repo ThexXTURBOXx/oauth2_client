@@ -83,7 +83,9 @@ class OAuth2Helper {
     if (!tknResp.isValid()) {
       throw OAuth2Exception(
           'Provider error ${tknResp.httpStatusCode}: ${tknResp.error}',
-          errorDescription: tknResp.errorDescription);
+          errorDescription: tknResp.errorDescription,
+          cause: tknResp.exception,
+          causeTrace: tknResp.stackTrace);
     }
 
     if (!tknResp.isBearer()) {
@@ -139,7 +141,7 @@ class OAuth2Helper {
           httpClient: httpClient);
     } else {
       tknResp = AccessTokenResponse.errorResponse(
-          error: 'Invalid grantType ($grantType)');
+          error: 'Invalid grantType', errorDescription: '$grantType');
     }
 
     if (tknResp.isValid()) {
@@ -186,7 +188,9 @@ class OAuth2Helper {
         tknResp = await getToken(httpClient: httpClient);
       } else {
         throw OAuth2Exception(tknResp.error ?? 'Error',
-            errorDescription: tknResp.errorDescription);
+            errorDescription: tknResp.errorDescription,
+            cause: tknResp.exception,
+            causeTrace: tknResp.stackTrace);
       }
     }
 

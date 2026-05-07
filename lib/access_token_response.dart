@@ -7,18 +7,20 @@ import 'package:oauth2_client/oauth2_response.dart';
 /// see https://tools.ietf.org/html/rfc6749#section-5.2
 
 class AccessTokenResponse extends OAuth2Response {
-  AccessTokenResponse() : super();
+  AccessTokenResponse({super.respMap, super.exception, super.stackTrace});
+
+  AccessTokenResponse.fromMap(super.map, {super.exception, super.stackTrace})
+      : super.fromMap();
 
   AccessTokenResponse.errorResponse(
       {super.httpStatusCode,
       super.error,
       super.errorDescription,
-      super.errorUri})
+      super.errorUri,
+      super.exception,
+      super.stackTrace})
       : super.errorResponse();
 
-  AccessTokenResponse.fromMap(super.map) : super.fromMap();
-
-  @override
   factory AccessTokenResponse.fromHttpResponse(http.Response response,
       {List<String>? requestedScopes}) {
     AccessTokenResponse resp;
