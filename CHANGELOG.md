@@ -1,3 +1,6 @@
+## [4.3.2] - 2026/05/07
+* Add even more exception and stack trace infos
+
 ## [4.3.1] - 2026/04/23
 * Cleanup token handling
 * Improve even more error messages
