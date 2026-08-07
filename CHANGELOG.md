@@ -1,3 +1,13 @@
+## [5.0.0-alpha.1] - 2026/08/07
+* Allow `flutter_secure_storage` versions `11.x`
+
+## [4.3.3] - 2026/08/07
+* Allow `flutter_secure_storage` versions `11.x`
+
+## [5.0.0-alpha.0] - 2026/05/15
+* Update `flutter_web_auth_2` to `6.x` alpha
+* Remove dedicated web auth flow - instead, delegate everything to `flutter_web_auth_2`
+
 ## [4.3.2] - 2026/05/07
 * Add even more exception and stack trace infos
 
