@@ -71,11 +71,16 @@ Add the library to your *pubspec.yaml* file:
 
 ```yaml
 dependencies:
-    oauth2_client: ^4.0.0
+    oauth2_client: ^5.0.0-alpha.1
 ```
 
 After that, please also follow the setup guides of [flutter_web_auth_2](https://pub.dev/packages/flutter_web_auth_2) as well as
 [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage).
+
+## Upgrading to 5.0.0
+Compared to 4.0.0, there are not that many breaking changes. Just be aware that:
+* `flutter_web_auth_2` now also handles browser authentication
+* `flutter_web_auth_2` migrated to built-in Kotlin. You need to account for this as well
 
 ## Upgrading to 4.0.0
 Compared to 3.0.0, there are not that many breaking changes. Just be aware that:
