@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 
+/// Provides various utility functions for OAuth 2.0 processes.
 class OAuth2Utils {
   /// Generates a code challenge from the [codeVerifier] used for the PKCE extension
   static String generateCodeChallenge(String codeVerifier) {
@@ -20,6 +21,7 @@ class OAuth2Utils {
     return codeChallenge;
   }
 
+  /// Converts the given parameter map to a URL query string.
   static String params2qs(Map params) {
     final qsList = <String>[];
 
@@ -38,10 +40,13 @@ class OAuth2Utils {
     return qsList.join('&');
   }
 
+  /// Converts the given parameter map to a URL query string and appends it to
+  /// the given URL (if non-empty).
   static String addParamsToUrl(String url, Map params) {
-    var qs = params2qs(params);
+    final qs = params2qs(params);
 
-    if (qs.isNotEmpty) url = '$url?$qs';
+    final appender = url.contains('?') ? '&' : '?';
+    if (qs.isNotEmpty) url = '$url$appender$qs';
 
     return url;
   }
