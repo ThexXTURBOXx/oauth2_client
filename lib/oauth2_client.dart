@@ -7,7 +7,6 @@ import 'package:oauth2_client/authorization_response.dart';
 import 'package:oauth2_client/oauth2_exception.dart';
 import 'package:oauth2_client/oauth2_response.dart';
 import 'package:oauth2_client/src/oauth2_utils.dart';
-import 'package:random_string/random_string.dart';
 
 import 'src/base_web_auth.dart';
 import 'src/flutter_web_auth_2_auth.dart';
@@ -83,6 +82,7 @@ class OAuth2Client {
       {required String clientId,
       List<String>? scopes,
       bool enableState = true,
+      int stateLength = defaultStateLength,
       String? state,
       http.Client? httpClient,
       BaseWebAuth? webAuthClient,
@@ -91,7 +91,13 @@ class OAuth2Client {
     httpClient ??= http.Client();
     webAuthClient ??= this.webAuthClient;
 
-    if (enableState) state ??= randomAlphaNumeric(25);
+    if (enableState) {
+      if (stateLength <= 0) {
+        throw ArgumentError.value(
+            stateLength, 'stateLength', 'Must be positive');
+      }
+      state ??= OAuth2Utils.secureRandomAlphaNumeric(stateLength);
+    }
 
     final authorizeUrl = getAuthorizeUrl(
         clientId: clientId,
@@ -138,7 +144,9 @@ class OAuth2Client {
       List<String>? scopes,
       String? clientSecret,
       bool enablePKCE = true,
+      int verifierLength = defaultVerifierLength,
       bool enableState = true,
+      int stateLength = defaultStateLength,
       String? state,
       String? codeVerifier,
       Function? afterAuthorizationCodeCb,
@@ -153,7 +161,11 @@ class OAuth2Client {
     String? codeChallenge;
 
     if (enablePKCE) {
-      codeVerifier ??= randomAlphaNumeric(80);
+      if (verifierLength < 43 || verifierLength > 128) {
+        throw ArgumentError.value(verifierLength, 'verifierLength',
+            'Must be between 43 and 128 (both allowed)');
+      }
+      codeVerifier ??= OAuth2Utils.secureRandomAlphaNumeric(verifierLength);
 
       codeChallenge = OAuth2Utils.generateCodeChallenge(codeVerifier);
     }
@@ -165,6 +177,7 @@ class OAuth2Client {
           scopes: scopes,
           codeChallenge: codeChallenge,
           enableState: enableState,
+          stateLength: stateLength,
           state: state,
           customParams: authCodeParams,
           webAuthOpts: webAuthOpts);
@@ -225,6 +238,7 @@ class OAuth2Client {
       List<String>? scopes,
       String? codeChallenge,
       bool enableState = true,
+      int stateLength = defaultStateLength,
       String? state,
       Map<String, dynamic>? customParams,
       BaseWebAuth? webAuthClient,
@@ -232,7 +246,11 @@ class OAuth2Client {
     webAuthClient ??= this.webAuthClient;
 
     if (enableState) {
-      state ??= randomAlphaNumeric(25);
+      if (stateLength <= 0) {
+        throw ArgumentError.value(
+            stateLength, 'stateLength', 'Must be positive');
+      }
+      state ??= OAuth2Utils.secureRandomAlphaNumeric(stateLength);
     }
 
     final authorizeUrl = getAuthorizeUrl(

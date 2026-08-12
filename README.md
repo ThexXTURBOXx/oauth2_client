@@ -71,6 +71,7 @@ After that, please also follow the setup guides of [flutter_web_auth_2](https://
 Compared to 4.0.0, there are not that many breaking changes. Just be aware that:
 * `flutter_web_auth_2` now also handles browser authentication
 * `flutter_web_auth_2` migrated to built-in Kotlin. You need to account for this as well
+* The `state` and `code_verifier` parameters have larger default lengths now (64 and 100, respectively - before: 25 and 80)
 
 ## Upgrading to 4.0.0
 Compared to 3.0.0, there are not that many breaking changes. Just be aware that:

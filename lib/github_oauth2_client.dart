@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:oauth2_client/access_token_response.dart';
 import 'package:oauth2_client/oauth2_client.dart';
+import 'package:oauth2_client/src/oauth2_utils.dart';
 
 import 'src/base_web_auth.dart';
 
@@ -21,7 +22,9 @@ class GitHubOAuth2Client extends OAuth2Client {
       List<String>? scopes,
       String? clientSecret,
       bool enablePKCE = true,
+      int verifierLength = defaultVerifierLength,
       bool enableState = true,
+      int stateLength = defaultStateLength,
       String? state,
       String? codeVerifier,
       Function? afterAuthorizationCodeCb,
@@ -36,7 +39,9 @@ class GitHubOAuth2Client extends OAuth2Client {
         scopes: scopes,
         clientSecret: clientSecret,
         enablePKCE: enablePKCE,
+        verifierLength: verifierLength,
         enableState: enableState,
+        stateLength: stateLength,
         state: state,
         codeVerifier: codeVerifier,
         afterAuthorizationCodeCb: afterAuthorizationCodeCb,

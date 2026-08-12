@@ -4,6 +4,7 @@ import 'package:oauth2_client/oauth2_client.dart';
 import 'package:oauth2_client/oauth2_exception.dart';
 import 'package:oauth2_client/oauth2_response.dart';
 import 'package:oauth2_client/src/base_web_auth.dart';
+import 'package:oauth2_client/src/oauth2_utils.dart';
 import 'package:oauth2_client/src/token_storage.dart';
 
 /// Helper class for simplifying OAuth2 authorization process.
@@ -28,7 +29,9 @@ class OAuth2Helper {
   String? clientSecret;
   List<String>? scopes;
   bool enablePKCE;
+  int verifierLength;
   bool enableState;
+  int stateLength;
 
   Function? afterAuthorizationCodeCb;
 
@@ -45,7 +48,9 @@ class OAuth2Helper {
       this.clientSecret,
       this.scopes,
       this.enablePKCE = true,
+      this.verifierLength = defaultVerifierLength,
       this.enableState = true,
+      this.stateLength = defaultStateLength,
       tokenStorage,
       this.afterAuthorizationCodeCb,
       this.authCodeParams,
@@ -114,7 +119,9 @@ class OAuth2Helper {
           clientSecret: clientSecret,
           scopes: scopes,
           enablePKCE: enablePKCE,
+          verifierLength: verifierLength,
           enableState: enableState,
+          stateLength: stateLength,
           authCodeParams: authCodeParams,
           accessTokenParams: accessTokenParams,
           accessTokenHeaders: accessTokenHeaders,
@@ -135,6 +142,7 @@ class OAuth2Helper {
           clientId: clientId,
           scopes: scopes,
           enableState: enableState,
+          stateLength: stateLength,
           webAuthClient: webAuthClient,
           webAuthOpts: webAuthOpts,
           customParams: authCodeParams,
