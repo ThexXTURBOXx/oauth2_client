@@ -8,14 +8,6 @@ The library handles **Authorization Code**, **Client Credentials** and **Implici
 # Prerequisites #
 
 ## Android ##
-On Android you must first set the *minSdkVersion* in the *build.gradle* file:
-```
-defaultConfig {
-   ...
-   minSdkVersion 23
-   ...
-```
-
 If at all possible, when registering your application on the OAuth provider **try not to use HTTPS** as the scheme part of the redirect uri, because in that case your application won't intercept the server redirection, as it will be automatically handled by the system browser (at least on Android). Just use a custom scheme, such as "my.test.app" or any other scheme you want.
 
 If the OAuth2 server **allows only HTTPS** uri schemes, refer to the [FAQ](#faq) section.
@@ -43,8 +35,6 @@ platform :ios, '11.0'
 ```
 
 ## Web ##
-Web support has been added in the 2.2.0 version, and should be considered preliminary.
-
 On the web platform you **must** register your application using an **HTTPS** redirect uri.
 
 When the authorization code flow is used, the authorization phase will be carried out by opening a popup window to the provider login page.
