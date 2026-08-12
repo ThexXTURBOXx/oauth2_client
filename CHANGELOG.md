@@ -1,3 +1,7 @@
+## [5.0.0-alpha.2] - 2026/08/12
+* Securely generate larger parameters
+* Update some documentation
+
 ## [5.0.0-alpha.1] - 2026/08/07
 * Allow `flutter_secure_storage` versions `11.x`
 
