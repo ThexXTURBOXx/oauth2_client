@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:oauth2_client/google_oauth2_client.dart';
 import 'package:oauth2_client/oauth2_helper.dart';
 
@@ -36,8 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _authenticate() async {
     var hlp = OAuth2Helper(
       GoogleOAuth2Client(
-          redirectUri: 'com.teranet.app://oauth2redirect',
-          customUriScheme: 'com.teranet.app'),
+        redirectUri: 'com.teranet.app://oauth2redirect',
+        customUriScheme: 'com.teranet.app',
+      ),
       grantType: OAuth2Helper.authorizationCode,
       clientId: 'XXX-XXX-XXX',
       clientSecret: 'XXX-XXX-XXX',
@@ -61,10 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              _body,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            Text(_body, style: Theme.of(context).textTheme.headlineMedium),
           ],
         ),
       ),

@@ -8,11 +8,13 @@ issue_tracker: https://github.com/ThexXTURBOXx/oauth2_client/issues
 publish_to: none
 
 environment:
-  sdk: '>=3.5.0 <4.0.0'
+  sdk: ^3.13.0
+  flutter: '>=3.47.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  material_ui: ^1.11.0
   oauth2_client: # Normally you would need to specify something like "^4.0.0" here
     path: ..
 
