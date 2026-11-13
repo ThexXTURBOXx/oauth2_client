@@ -1,3 +1,6 @@
+## [5.0.0-alpha.3] - 2026/11/13
+* Update some documentation
+
 ## [5.0.0-alpha.2] - 2026/08/12
 * Securely generate larger parameters
 * Update some documentation
