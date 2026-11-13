@@ -23,7 +23,7 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1'],
-        }
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -45,8 +45,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -68,8 +68,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1', 'scope2'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -90,8 +90,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1', 'scope2'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -112,8 +112,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1', 'scope2'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -134,8 +134,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1', 'scope2'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -156,8 +156,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1', 'scope2'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -178,8 +178,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1', 'scope2'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -200,8 +200,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': ['scope1', 'scope2'],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -225,8 +225,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': null,
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -247,8 +247,8 @@ void main() {
           'expires_in': 3600,
           'refresh_token': '0987654321',
           'scope': [],
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -265,7 +265,7 @@ void main() {
         'refresh_token': '0987654321',
         'scope': ['scope1'],
         'expires_in': 3600,
-        'http_status_code': 200
+        'http_status_code': 200,
       };
 
       var scope2Map = <String, dynamic>{
@@ -274,7 +274,7 @@ void main() {
         'refresh_token': '0987654321',
         'scope': ['scope2'],
         'expires_in': 3600,
-        'http_status_code': 200
+        'http_status_code': 200,
       };
 
       final secStorage = MockSecureStorage();
@@ -284,14 +284,16 @@ void main() {
 
       final storage = TokenStorage('my_token_url', storage: secStorage);
 
-      var tokens =
-          await storage.insertToken(AccessTokenResponse.fromMap(scope1Map));
+      var tokens = await storage.insertToken(
+        AccessTokenResponse.fromMap(scope1Map),
+      );
 
       expect(tokens, contains('scope1'));
       expect(tokens.containsKey('scope2'), false);
 
-      tokens =
-          await storage.insertToken(AccessTokenResponse.fromMap(scope2Map));
+      tokens = await storage.insertToken(
+        AccessTokenResponse.fromMap(scope2Map),
+      );
 
       expect(tokens, contains('scope2'));
     });
@@ -303,7 +305,7 @@ void main() {
         'refresh_token': '0987654321',
         'scope': ['scope1'],
         'expires_in': 3600,
-        'http_status_code': 200
+        'http_status_code': 200,
       };
 
       final secStorage = MockSecureStorage();
@@ -321,7 +323,7 @@ void main() {
         'token_type': 'Bearer',
         'refresh_token': '0987654321',
         'expires_in': 3600,
-        'http_status_code': 200
+        'http_status_code': 200,
       };
 
       final secStorage = MockSecureStorage();
@@ -330,8 +332,9 @@ void main() {
 
       final storage = TokenStorage('my_token_url', storage: secStorage);
 
-      var tokens =
-          await storage.insertToken(AccessTokenResponse.fromMap(noScopesMap));
+      var tokens = await storage.insertToken(
+        AccessTokenResponse.fromMap(noScopesMap),
+      );
 
       expect(tokens, contains('_default_'));
     });
@@ -349,8 +352,8 @@ void main() {
           'refresh_token': '0987654321',
           'scope': scopes,
           'expires_in': 3600,
-          'http_status_code': 200
-        }
+          'http_status_code': 200,
+        },
       };
 
       when(secStorage.read('my_token_url'))
@@ -361,8 +364,9 @@ void main() {
 
       await storage.deleteToken(scopes);
 
-      expect(verify(secStorage.write('my_token_url', captureAny)).captured,
-          ['{}']);
+      expect(verify(secStorage.write('my_token_url', captureAny)).captured, [
+        '{}',
+      ]);
 
       clearInteractions(secStorage);
     });

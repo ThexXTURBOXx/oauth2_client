@@ -10,19 +10,21 @@ class AccessTokenResponse extends OAuth2Response {
   AccessTokenResponse({super.respMap, super.exception, super.stackTrace});
 
   AccessTokenResponse.fromMap(super.map, {super.exception, super.stackTrace})
-      : super.fromMap();
+    : super.fromMap();
 
-  AccessTokenResponse.errorResponse(
-      {super.httpStatusCode,
-      super.error,
-      super.errorDescription,
-      super.errorUri,
-      super.exception,
-      super.stackTrace})
-      : super.errorResponse();
+  AccessTokenResponse.errorResponse({
+    super.httpStatusCode,
+    super.error,
+    super.errorDescription,
+    super.errorUri,
+    super.exception,
+    super.stackTrace,
+  }) : super.errorResponse();
 
-  factory AccessTokenResponse.fromHttpResponse(http.Response response,
-      {List<String>? requestedScopes}) {
+  factory AccessTokenResponse.fromHttpResponse(
+    http.Response response, {
+    List<String>? requestedScopes,
+  }) {
     AccessTokenResponse resp;
 
     var defMap = {'http_status_code': response.statusCode};
@@ -60,7 +62,7 @@ class AccessTokenResponse extends OAuth2Response {
     } else {
       resp = AccessTokenResponse.fromMap({
         ...defMap,
-        ...{'scope': requestedScopes}
+        ...{'scope': requestedScopes},
       });
     }
 
@@ -71,7 +73,7 @@ class AccessTokenResponse extends OAuth2Response {
   Map<String, dynamic> toMap() {
     return {
       ...respMap,
-      ...{'scope': scope}
+      ...{'scope': scope},
     };
   }
 

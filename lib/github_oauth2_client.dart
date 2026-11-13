@@ -10,49 +10,53 @@ import 'src/base_web_auth.dart';
 /// In order to use this client you need to first create a new OAuth2 App in the GittHub Developer Settings (https://github.com/settings/developers)
 ///
 class GitHubOAuth2Client extends OAuth2Client {
-  GitHubOAuth2Client(
-      {required super.redirectUri, required super.customUriScheme})
-      : super(
-            authorizeUrl: 'https://github.com/login/oauth/authorize',
-            tokenUrl: 'https://github.com/login/oauth/access_token');
+  GitHubOAuth2Client({
+    required super.redirectUri,
+    required super.customUriScheme,
+  }) : super(
+         authorizeUrl: 'https://github.com/login/oauth/authorize',
+         tokenUrl: 'https://github.com/login/oauth/access_token',
+       );
 
   @override
-  Future<AccessTokenResponse> getTokenWithAuthCodeFlow(
-      {required String clientId,
-      List<String>? scopes,
-      String? clientSecret,
-      bool enablePKCE = true,
-      int verifierLength = defaultVerifierLength,
-      bool enableState = true,
-      int stateLength = defaultStateLength,
-      String? state,
-      String? codeVerifier,
-      Function? afterAuthorizationCodeCb,
-      Map<String, dynamic>? authCodeParams,
-      Map<String, dynamic>? accessTokenParams,
-      Map<String, String>? accessTokenHeaders,
-      http.Client? httpClient,
-      BaseWebAuth? webAuthClient,
-      Map<String, dynamic>? webAuthOpts}) async {
+  Future<AccessTokenResponse> getTokenWithAuthCodeFlow({
+    required String clientId,
+    List<String>? scopes,
+    String? clientSecret,
+    bool enablePKCE = true,
+    int verifierLength = defaultVerifierLength,
+    bool enableState = true,
+    int stateLength = defaultStateLength,
+    String? state,
+    String? codeVerifier,
+    Function? afterAuthorizationCodeCb,
+    Map<String, dynamic>? authCodeParams,
+    Map<String, dynamic>? accessTokenParams,
+    Map<String, String>? accessTokenHeaders,
+    http.Client? httpClient,
+    BaseWebAuth? webAuthClient,
+    Map<String, dynamic>? webAuthOpts,
+  }) async {
     return super.getTokenWithAuthCodeFlow(
-        clientId: clientId,
-        scopes: scopes,
-        clientSecret: clientSecret,
-        enablePKCE: enablePKCE,
-        verifierLength: verifierLength,
-        enableState: enableState,
-        stateLength: stateLength,
-        state: state,
-        codeVerifier: codeVerifier,
-        afterAuthorizationCodeCb: afterAuthorizationCodeCb,
-        authCodeParams: authCodeParams,
-        accessTokenParams: accessTokenParams,
-        accessTokenHeaders: {
-          ...?accessTokenHeaders,
-          ...{'Accept': 'application/json'}
-        },
-        httpClient: httpClient,
-        webAuthClient: webAuthClient,
-        webAuthOpts: webAuthOpts);
+      clientId: clientId,
+      scopes: scopes,
+      clientSecret: clientSecret,
+      enablePKCE: enablePKCE,
+      verifierLength: verifierLength,
+      enableState: enableState,
+      stateLength: stateLength,
+      state: state,
+      codeVerifier: codeVerifier,
+      afterAuthorizationCodeCb: afterAuthorizationCodeCb,
+      authCodeParams: authCodeParams,
+      accessTokenParams: accessTokenParams,
+      accessTokenHeaders: {
+        ...?accessTokenHeaders,
+        ...{'Accept': 'application/json'},
+      },
+      httpClient: httpClient,
+      webAuthClient: webAuthClient,
+      webAuthOpts: webAuthOpts,
+    );
   }
 }

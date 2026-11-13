@@ -13,19 +13,19 @@ class OAuth2Response {
 
   OAuth2Response.fromMap(this.respMap, {this.exception, this.stackTrace});
 
-  OAuth2Response.errorResponse(
-      {int httpStatusCode = 404,
-      String? error,
-      String? errorDescription,
-      String? errorUri,
-      this.exception,
-      this.stackTrace})
-      : respMap = {
-          'http_status_code': httpStatusCode,
-          'error': error,
-          'error_description': errorDescription,
-          'errorUri': errorUri
-        };
+  OAuth2Response.errorResponse({
+    int httpStatusCode = 404,
+    String? error,
+    String? errorDescription,
+    String? errorUri,
+    this.exception,
+    this.stackTrace,
+  }) : respMap = {
+         'http_status_code': httpStatusCode,
+         'error': error,
+         'error_description': errorDescription,
+         'errorUri': errorUri,
+       };
 
   factory OAuth2Response.fromHttpResponse(http.Response response) {
     OAuth2Response resp;

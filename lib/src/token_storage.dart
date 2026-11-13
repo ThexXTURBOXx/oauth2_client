@@ -4,9 +4,9 @@ import 'package:oauth2_client/access_token_response.dart';
 
 import 'base_storage.dart';
 import 'storage.dart'
-// ignore: uri_does_not_exist
+    // ignore: uri_does_not_exist
     if (dart.library.io) 'secure_storage.dart'
-// ignore: uri_does_not_exist
+    // ignore: uri_does_not_exist
     if (dart.library.js_interop) 'browser_storage.dart';
 
 class TokenStorage {
@@ -26,8 +26,9 @@ class TokenStorage {
     final serializedStoredTokens = await storage.read(key);
 
     if (serializedStoredTokens != null) {
-      final Map<String, dynamic> storedTokens =
-          jsonDecode(serializedStoredTokens);
+      final Map<String, dynamic> storedTokens = jsonDecode(
+        serializedStoredTokens,
+      );
 
       final cleanScopes = clearScopes(scopes);
 

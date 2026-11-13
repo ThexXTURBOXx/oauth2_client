@@ -13,8 +13,8 @@ class ShopifyOAuth2Client extends OAuth2Client {
     required super.redirectUri,
     required super.customUriScheme,
   }) : super(
-          authorizeUrl: 'https://$shop.myshopify.com/admin/oauth/authorize',
-          tokenUrl: 'https://$shop.myshopify.com/admin/oauth/access_token',
-          credentialsLocation: CredentialsLocation.body,
-        );
+         authorizeUrl: 'https://$shop.myshopify.com/admin/oauth/authorize',
+         tokenUrl: 'https://$shop.myshopify.com/admin/oauth/access_token',
+         credentialsLocation: CredentialsLocation.body,
+       );
 }

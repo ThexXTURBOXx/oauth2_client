@@ -35,77 +35,42 @@ import 'package:oauth2_client/src/token_storage.dart' as _i13;
 // ignore_for_file: invalid_use_of_internal_member
 
 class _FakeBaseWebAuth_0 extends _i1.SmartFake implements _i2.BaseWebAuth {
-  _FakeBaseWebAuth_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeBaseWebAuth_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeAccessTokenResponse_1 extends _i1.SmartFake
     implements _i3.AccessTokenResponse {
-  _FakeAccessTokenResponse_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeAccessTokenResponse_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeAuthorizationResponse_2 extends _i1.SmartFake
     implements _i4.AuthorizationResponse {
-  _FakeAuthorizationResponse_2(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeAuthorizationResponse_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeOAuth2Response_3 extends _i1.SmartFake
     implements _i5.OAuth2Response {
-  _FakeOAuth2Response_3(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeOAuth2Response_3(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeResponse_4 extends _i1.SmartFake implements _i6.Response {
-  _FakeResponse_4(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeResponse_4(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeStreamedResponse_5 extends _i1.SmartFake
     implements _i6.StreamedResponse {
-  _FakeStreamedResponse_5(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeStreamedResponse_5(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeBaseStorage_6 extends _i1.SmartFake implements _i7.BaseStorage {
-  _FakeBaseStorage_6(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeBaseStorage_6(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [OAuth2Client].
@@ -118,180 +83,132 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
 
   @override
   String get redirectUri => (super.noSuchMethod(
-        Invocation.getter(#redirectUri),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#redirectUri),
-        ),
-      ) as String);
+    Invocation.getter(#redirectUri),
+    returnValue: _i9.dummyValue<String>(this, Invocation.getter(#redirectUri)),
+  ) as String);
 
   @override
   String get customUriScheme => (super.noSuchMethod(
-        Invocation.getter(#customUriScheme),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#customUriScheme),
-        ),
-      ) as String);
+    Invocation.getter(#customUriScheme),
+    returnValue: _i9.dummyValue<String>(
+      this,
+      Invocation.getter(#customUriScheme),
+    ),
+  ) as String);
 
   @override
   String get tokenUrl => (super.noSuchMethod(
-        Invocation.getter(#tokenUrl),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#tokenUrl),
-        ),
-      ) as String);
+    Invocation.getter(#tokenUrl),
+    returnValue: _i9.dummyValue<String>(this, Invocation.getter(#tokenUrl)),
+  ) as String);
 
   @override
   String get authorizeUrl => (super.noSuchMethod(
-        Invocation.getter(#authorizeUrl),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#authorizeUrl),
-        ),
-      ) as String);
+    Invocation.getter(#authorizeUrl),
+    returnValue: _i9.dummyValue<String>(this, Invocation.getter(#authorizeUrl)),
+  ) as String);
 
   @override
   String get scopeSeparator => (super.noSuchMethod(
-        Invocation.getter(#scopeSeparator),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#scopeSeparator),
-        ),
-      ) as String);
+    Invocation.getter(#scopeSeparator),
+    returnValue: _i9.dummyValue<String>(
+      this,
+      Invocation.getter(#scopeSeparator),
+    ),
+  ) as String);
 
   @override
   String get clientIdKey => (super.noSuchMethod(
-        Invocation.getter(#clientIdKey),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#clientIdKey),
-        ),
-      ) as String);
+    Invocation.getter(#clientIdKey),
+    returnValue: _i9.dummyValue<String>(this, Invocation.getter(#clientIdKey)),
+  ) as String);
 
   @override
   String get clientSecretKey => (super.noSuchMethod(
-        Invocation.getter(#clientSecretKey),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#clientSecretKey),
-        ),
-      ) as String);
+    Invocation.getter(#clientSecretKey),
+    returnValue: _i9.dummyValue<String>(
+      this,
+      Invocation.getter(#clientSecretKey),
+    ),
+  ) as String);
 
   @override
   _i2.BaseWebAuth get webAuthClient => (super.noSuchMethod(
-        Invocation.getter(#webAuthClient),
-        returnValue: _FakeBaseWebAuth_0(
-          this,
-          Invocation.getter(#webAuthClient),
-        ),
-      ) as _i2.BaseWebAuth);
+    Invocation.getter(#webAuthClient),
+    returnValue: _FakeBaseWebAuth_0(this, Invocation.getter(#webAuthClient)),
+  ) as _i2.BaseWebAuth);
 
   @override
   _i8.CredentialsLocation get credentialsLocation => (super.noSuchMethod(
-        Invocation.getter(#credentialsLocation),
-        returnValue: _i8.CredentialsLocation.header,
-      ) as _i8.CredentialsLocation);
+    Invocation.getter(#credentialsLocation),
+    returnValue: _i8.CredentialsLocation.header,
+  ) as _i8.CredentialsLocation);
 
   @override
   set redirectUri(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #redirectUri,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#redirectUri, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set customUriScheme(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #customUriScheme,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#customUriScheme, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set tokenUrl(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #tokenUrl,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#tokenUrl, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set refreshUrl(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #refreshUrl,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#refreshUrl, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set revokeUrl(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #revokeUrl,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#revokeUrl, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set authorizeUrl(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #authorizeUrl,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#authorizeUrl, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set scopeSeparator(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #scopeSeparator,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#scopeSeparator, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set clientIdKey(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #clientIdKey,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#clientIdKey, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set clientSecretKey(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #clientSecretKey,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#clientSecretKey, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set webAuthClient(_i2.BaseWebAuth? value) => super.noSuchMethod(
-        Invocation.setter(
-          #webAuthClient,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#webAuthClient, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set credentialsLocation(_i8.CredentialsLocation? value) => super.noSuchMethod(
-        Invocation.setter(
-          #credentialsLocation,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#credentialsLocation, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   _i10.Future<_i3.AccessTokenResponse> getTokenWithImplicitGrantFlow({
@@ -304,43 +221,35 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     _i2.BaseWebAuth? webAuthClient,
     Map<String, dynamic>? webAuthOpts,
     Map<String, dynamic>? customParams,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getTokenWithImplicitGrantFlow,
-          [],
-          {
-            #clientId: clientId,
-            #scopes: scopes,
-            #enableState: enableState,
-            #stateLength: stateLength,
-            #state: state,
-            #httpClient: httpClient,
-            #webAuthClient: webAuthClient,
-            #webAuthOpts: webAuthOpts,
-            #customParams: customParams,
-          },
-        ),
-        returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
-            _FakeAccessTokenResponse_1(
-          this,
-          Invocation.method(
-            #getTokenWithImplicitGrantFlow,
-            [],
-            {
-              #clientId: clientId,
-              #scopes: scopes,
-              #enableState: enableState,
-              #stateLength: stateLength,
-              #state: state,
-              #httpClient: httpClient,
-              #webAuthClient: webAuthClient,
-              #webAuthOpts: webAuthOpts,
-              #customParams: customParams,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i3.AccessTokenResponse>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#getTokenWithImplicitGrantFlow, [], {
+      #clientId: clientId,
+      #scopes: scopes,
+      #enableState: enableState,
+      #stateLength: stateLength,
+      #state: state,
+      #httpClient: httpClient,
+      #webAuthClient: webAuthClient,
+      #webAuthOpts: webAuthOpts,
+      #customParams: customParams,
+    }),
+    returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
+      _FakeAccessTokenResponse_1(
+        this,
+        Invocation.method(#getTokenWithImplicitGrantFlow, [], {
+          #clientId: clientId,
+          #scopes: scopes,
+          #enableState: enableState,
+          #stateLength: stateLength,
+          #state: state,
+          #httpClient: httpClient,
+          #webAuthClient: webAuthClient,
+          #webAuthOpts: webAuthOpts,
+          #customParams: customParams,
+        }),
+      ),
+    ),
+  ) as _i10.Future<_i3.AccessTokenResponse>);
 
   @override
   _i10.Future<_i3.AccessTokenResponse> getTokenWithAuthCodeFlow({
@@ -360,57 +269,49 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     _i6.Client? httpClient,
     _i2.BaseWebAuth? webAuthClient,
     Map<String, dynamic>? webAuthOpts,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getTokenWithAuthCodeFlow,
-          [],
-          {
-            #clientId: clientId,
-            #scopes: scopes,
-            #clientSecret: clientSecret,
-            #enablePKCE: enablePKCE,
-            #verifierLength: verifierLength,
-            #enableState: enableState,
-            #stateLength: stateLength,
-            #state: state,
-            #codeVerifier: codeVerifier,
-            #afterAuthorizationCodeCb: afterAuthorizationCodeCb,
-            #authCodeParams: authCodeParams,
-            #accessTokenParams: accessTokenParams,
-            #accessTokenHeaders: accessTokenHeaders,
-            #httpClient: httpClient,
-            #webAuthClient: webAuthClient,
-            #webAuthOpts: webAuthOpts,
-          },
-        ),
-        returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
-            _FakeAccessTokenResponse_1(
-          this,
-          Invocation.method(
-            #getTokenWithAuthCodeFlow,
-            [],
-            {
-              #clientId: clientId,
-              #scopes: scopes,
-              #clientSecret: clientSecret,
-              #enablePKCE: enablePKCE,
-              #verifierLength: verifierLength,
-              #enableState: enableState,
-              #stateLength: stateLength,
-              #state: state,
-              #codeVerifier: codeVerifier,
-              #afterAuthorizationCodeCb: afterAuthorizationCodeCb,
-              #authCodeParams: authCodeParams,
-              #accessTokenParams: accessTokenParams,
-              #accessTokenHeaders: accessTokenHeaders,
-              #httpClient: httpClient,
-              #webAuthClient: webAuthClient,
-              #webAuthOpts: webAuthOpts,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i3.AccessTokenResponse>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#getTokenWithAuthCodeFlow, [], {
+      #clientId: clientId,
+      #scopes: scopes,
+      #clientSecret: clientSecret,
+      #enablePKCE: enablePKCE,
+      #verifierLength: verifierLength,
+      #enableState: enableState,
+      #stateLength: stateLength,
+      #state: state,
+      #codeVerifier: codeVerifier,
+      #afterAuthorizationCodeCb: afterAuthorizationCodeCb,
+      #authCodeParams: authCodeParams,
+      #accessTokenParams: accessTokenParams,
+      #accessTokenHeaders: accessTokenHeaders,
+      #httpClient: httpClient,
+      #webAuthClient: webAuthClient,
+      #webAuthOpts: webAuthOpts,
+    }),
+    returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
+      _FakeAccessTokenResponse_1(
+        this,
+        Invocation.method(#getTokenWithAuthCodeFlow, [], {
+          #clientId: clientId,
+          #scopes: scopes,
+          #clientSecret: clientSecret,
+          #enablePKCE: enablePKCE,
+          #verifierLength: verifierLength,
+          #enableState: enableState,
+          #stateLength: stateLength,
+          #state: state,
+          #codeVerifier: codeVerifier,
+          #afterAuthorizationCodeCb: afterAuthorizationCodeCb,
+          #authCodeParams: authCodeParams,
+          #accessTokenParams: accessTokenParams,
+          #accessTokenHeaders: accessTokenHeaders,
+          #httpClient: httpClient,
+          #webAuthClient: webAuthClient,
+          #webAuthOpts: webAuthOpts,
+        }),
+      ),
+    ),
+  ) as _i10.Future<_i3.AccessTokenResponse>);
 
   @override
   _i10.Future<_i3.AccessTokenResponse> getTokenWithClientCredentialsFlow({
@@ -419,35 +320,27 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     List<String>? scopes,
     Map<String, String>? customHeaders,
     _i6.Client? httpClient,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getTokenWithClientCredentialsFlow,
-          [],
-          {
-            #clientId: clientId,
-            #clientSecret: clientSecret,
-            #scopes: scopes,
-            #customHeaders: customHeaders,
-            #httpClient: httpClient,
-          },
-        ),
-        returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
-            _FakeAccessTokenResponse_1(
-          this,
-          Invocation.method(
-            #getTokenWithClientCredentialsFlow,
-            [],
-            {
-              #clientId: clientId,
-              #clientSecret: clientSecret,
-              #scopes: scopes,
-              #customHeaders: customHeaders,
-              #httpClient: httpClient,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i3.AccessTokenResponse>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#getTokenWithClientCredentialsFlow, [], {
+      #clientId: clientId,
+      #clientSecret: clientSecret,
+      #scopes: scopes,
+      #customHeaders: customHeaders,
+      #httpClient: httpClient,
+    }),
+    returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
+      _FakeAccessTokenResponse_1(
+        this,
+        Invocation.method(#getTokenWithClientCredentialsFlow, [], {
+          #clientId: clientId,
+          #clientSecret: clientSecret,
+          #scopes: scopes,
+          #customHeaders: customHeaders,
+          #httpClient: httpClient,
+        }),
+      ),
+    ),
+  ) as _i10.Future<_i3.AccessTokenResponse>);
 
   @override
   _i10.Future<_i4.AuthorizationResponse> requestAuthorization({
@@ -460,43 +353,35 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     Map<String, dynamic>? customParams,
     _i2.BaseWebAuth? webAuthClient,
     Map<String, dynamic>? webAuthOpts,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #requestAuthorization,
-          [],
-          {
-            #clientId: clientId,
-            #scopes: scopes,
-            #codeChallenge: codeChallenge,
-            #enableState: enableState,
-            #stateLength: stateLength,
-            #state: state,
-            #customParams: customParams,
-            #webAuthClient: webAuthClient,
-            #webAuthOpts: webAuthOpts,
-          },
-        ),
-        returnValue: _i10.Future<_i4.AuthorizationResponse>.value(
-            _FakeAuthorizationResponse_2(
-          this,
-          Invocation.method(
-            #requestAuthorization,
-            [],
-            {
-              #clientId: clientId,
-              #scopes: scopes,
-              #codeChallenge: codeChallenge,
-              #enableState: enableState,
-              #stateLength: stateLength,
-              #state: state,
-              #customParams: customParams,
-              #webAuthClient: webAuthClient,
-              #webAuthOpts: webAuthOpts,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i4.AuthorizationResponse>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#requestAuthorization, [], {
+      #clientId: clientId,
+      #scopes: scopes,
+      #codeChallenge: codeChallenge,
+      #enableState: enableState,
+      #stateLength: stateLength,
+      #state: state,
+      #customParams: customParams,
+      #webAuthClient: webAuthClient,
+      #webAuthOpts: webAuthOpts,
+    }),
+    returnValue: _i10.Future<_i4.AuthorizationResponse>.value(
+      _FakeAuthorizationResponse_2(
+        this,
+        Invocation.method(#requestAuthorization, [], {
+          #clientId: clientId,
+          #scopes: scopes,
+          #codeChallenge: codeChallenge,
+          #enableState: enableState,
+          #stateLength: stateLength,
+          #state: state,
+          #customParams: customParams,
+          #webAuthClient: webAuthClient,
+          #webAuthOpts: webAuthOpts,
+        }),
+      ),
+    ),
+  ) as _i10.Future<_i4.AuthorizationResponse>);
 
   @override
   _i10.Future<_i3.AccessTokenResponse> requestAccessToken({
@@ -508,41 +393,33 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     Map<String, dynamic>? customParams,
     Map<String, String>? customHeaders,
     _i6.Client? httpClient,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #requestAccessToken,
-          [],
-          {
-            #code: code,
-            #clientId: clientId,
-            #clientSecret: clientSecret,
-            #codeVerifier: codeVerifier,
-            #scopes: scopes,
-            #customParams: customParams,
-            #customHeaders: customHeaders,
-            #httpClient: httpClient,
-          },
-        ),
-        returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
-            _FakeAccessTokenResponse_1(
-          this,
-          Invocation.method(
-            #requestAccessToken,
-            [],
-            {
-              #code: code,
-              #clientId: clientId,
-              #clientSecret: clientSecret,
-              #codeVerifier: codeVerifier,
-              #scopes: scopes,
-              #customParams: customParams,
-              #customHeaders: customHeaders,
-              #httpClient: httpClient,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i3.AccessTokenResponse>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#requestAccessToken, [], {
+      #code: code,
+      #clientId: clientId,
+      #clientSecret: clientSecret,
+      #codeVerifier: codeVerifier,
+      #scopes: scopes,
+      #customParams: customParams,
+      #customHeaders: customHeaders,
+      #httpClient: httpClient,
+    }),
+    returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
+      _FakeAccessTokenResponse_1(
+        this,
+        Invocation.method(#requestAccessToken, [], {
+          #code: code,
+          #clientId: clientId,
+          #clientSecret: clientSecret,
+          #codeVerifier: codeVerifier,
+          #scopes: scopes,
+          #customParams: customParams,
+          #customHeaders: customHeaders,
+          #httpClient: httpClient,
+        }),
+      ),
+    ),
+  ) as _i10.Future<_i3.AccessTokenResponse>);
 
   @override
   _i10.Future<_i3.AccessTokenResponse> refreshToken(
@@ -551,8 +428,20 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     required String? clientId,
     String? clientSecret,
     List<String>? scopes,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #refreshToken,
+      [refreshToken],
+      {
+        #httpClient: httpClient,
+        #clientId: clientId,
+        #clientSecret: clientSecret,
+        #scopes: scopes,
+      },
+    ),
+    returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
+      _FakeAccessTokenResponse_1(
+        this,
         Invocation.method(
           #refreshToken,
           [refreshToken],
@@ -563,21 +452,9 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
             #scopes: scopes,
           },
         ),
-        returnValue: _i10.Future<_i3.AccessTokenResponse>.value(
-            _FakeAccessTokenResponse_1(
-          this,
-          Invocation.method(
-            #refreshToken,
-            [refreshToken],
-            {
-              #httpClient: httpClient,
-              #clientId: clientId,
-              #clientSecret: clientSecret,
-              #scopes: scopes,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i3.AccessTokenResponse>);
+      ),
+    ),
+  ) as _i10.Future<_i3.AccessTokenResponse>);
 
   @override
   _i10.Future<_i5.OAuth2Response> revokeToken(
@@ -586,8 +463,20 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     String? clientSecret,
     _i6.Client? httpClient,
     Map<String, dynamic>? params,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #revokeToken,
+      [tknResp],
+      {
+        #clientId: clientId,
+        #clientSecret: clientSecret,
+        #httpClient: httpClient,
+        #params: params,
+      },
+    ),
+    returnValue: _i10.Future<_i5.OAuth2Response>.value(
+      _FakeOAuth2Response_3(
+        this,
         Invocation.method(
           #revokeToken,
           [tknResp],
@@ -598,21 +487,9 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
             #params: params,
           },
         ),
-        returnValue:
-            _i10.Future<_i5.OAuth2Response>.value(_FakeOAuth2Response_3(
-          this,
-          Invocation.method(
-            #revokeToken,
-            [tknResp],
-            {
-              #clientId: clientId,
-              #clientSecret: clientSecret,
-              #httpClient: httpClient,
-              #params: params,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i5.OAuth2Response>);
+      ),
+    ),
+  ) as _i10.Future<_i5.OAuth2Response>);
 
   @override
   _i10.Future<_i5.OAuth2Response> revokeAccessToken(
@@ -621,8 +498,20 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     String? clientSecret,
     _i6.Client? httpClient,
     Map<String, dynamic>? params,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #revokeAccessToken,
+      [tknResp],
+      {
+        #clientId: clientId,
+        #clientSecret: clientSecret,
+        #httpClient: httpClient,
+        #params: params,
+      },
+    ),
+    returnValue: _i10.Future<_i5.OAuth2Response>.value(
+      _FakeOAuth2Response_3(
+        this,
         Invocation.method(
           #revokeAccessToken,
           [tknResp],
@@ -633,21 +522,9 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
             #params: params,
           },
         ),
-        returnValue:
-            _i10.Future<_i5.OAuth2Response>.value(_FakeOAuth2Response_3(
-          this,
-          Invocation.method(
-            #revokeAccessToken,
-            [tknResp],
-            {
-              #clientId: clientId,
-              #clientSecret: clientSecret,
-              #httpClient: httpClient,
-              #params: params,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i5.OAuth2Response>);
+      ),
+    ),
+  ) as _i10.Future<_i5.OAuth2Response>);
 
   @override
   _i10.Future<_i5.OAuth2Response> revokeRefreshToken(
@@ -656,8 +533,20 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     String? clientSecret,
     _i6.Client? httpClient,
     Map<String, dynamic>? params,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #revokeRefreshToken,
+      [tknResp],
+      {
+        #clientId: clientId,
+        #clientSecret: clientSecret,
+        #httpClient: httpClient,
+        #params: params,
+      },
+    ),
+    returnValue: _i10.Future<_i5.OAuth2Response>.value(
+      _FakeOAuth2Response_3(
+        this,
         Invocation.method(
           #revokeRefreshToken,
           [tknResp],
@@ -668,21 +557,9 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
             #params: params,
           },
         ),
-        returnValue:
-            _i10.Future<_i5.OAuth2Response>.value(_FakeOAuth2Response_3(
-          this,
-          Invocation.method(
-            #revokeRefreshToken,
-            [tknResp],
-            {
-              #clientId: clientId,
-              #clientSecret: clientSecret,
-              #httpClient: httpClient,
-              #params: params,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i5.OAuth2Response>);
+      ),
+    ),
+  ) as _i10.Future<_i5.OAuth2Response>);
 
   @override
   String getAuthorizeUrl({
@@ -694,40 +571,31 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     String? state,
     String? codeChallenge,
     Map<String, dynamic>? customParams,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getAuthorizeUrl,
-          [],
-          {
-            #clientId: clientId,
-            #responseType: responseType,
-            #redirectUri: redirectUri,
-            #scopes: scopes,
-            #enableState: enableState,
-            #state: state,
-            #codeChallenge: codeChallenge,
-            #customParams: customParams,
-          },
-        ),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getAuthorizeUrl,
-            [],
-            {
-              #clientId: clientId,
-              #responseType: responseType,
-              #redirectUri: redirectUri,
-              #scopes: scopes,
-              #enableState: enableState,
-              #state: state,
-              #codeChallenge: codeChallenge,
-              #customParams: customParams,
-            },
-          ),
-        ),
-      ) as String);
+  }) => (super.noSuchMethod(
+    Invocation.method(#getAuthorizeUrl, [], {
+      #clientId: clientId,
+      #responseType: responseType,
+      #redirectUri: redirectUri,
+      #scopes: scopes,
+      #enableState: enableState,
+      #state: state,
+      #codeChallenge: codeChallenge,
+      #customParams: customParams,
+    }),
+    returnValue: _i9.dummyValue<String>(
+      this,
+      Invocation.method(#getAuthorizeUrl, [], {
+        #clientId: clientId,
+        #responseType: responseType,
+        #redirectUri: redirectUri,
+        #scopes: scopes,
+        #enableState: enableState,
+        #state: state,
+        #codeChallenge: codeChallenge,
+        #customParams: customParams,
+      }),
+    ),
+  ) as String);
 
   @override
   Map<String, dynamic> getTokenUrlParams({
@@ -735,46 +603,34 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
     String? redirectUri,
     String? codeVerifier,
     Map<String, dynamic>? customParams,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getTokenUrlParams,
-          [],
-          {
-            #code: code,
-            #redirectUri: redirectUri,
-            #codeVerifier: codeVerifier,
-            #customParams: customParams,
-          },
-        ),
-        returnValue: <String, dynamic>{},
-      ) as Map<String, dynamic>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#getTokenUrlParams, [], {
+      #code: code,
+      #redirectUri: redirectUri,
+      #codeVerifier: codeVerifier,
+      #customParams: customParams,
+    }),
+    returnValue: <String, dynamic>{},
+  ) as Map<String, dynamic>);
 
   @override
   Map<String, String> getAuthorizationHeader({
     required String? clientId,
     String? clientSecret,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getAuthorizationHeader,
-          [],
-          {
-            #clientId: clientId,
-            #clientSecret: clientSecret,
-          },
-        ),
-        returnValue: <String, String>{},
-      ) as Map<String, String>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#getAuthorizationHeader, [], {
+      #clientId: clientId,
+      #clientSecret: clientSecret,
+    }),
+    returnValue: <String, String>{},
+  ) as Map<String, String>);
 
   @override
   Map<String, String> getRefreshUrlParams({required String? refreshToken}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getRefreshUrlParams,
-          [],
-          {#refreshToken: refreshToken},
-        ),
+        Invocation.method(#getRefreshUrlParams, [], {
+          #refreshToken: refreshToken,
+        }),
         returnValue: <String, String>{},
       ) as Map<String, String>);
 
@@ -782,37 +638,30 @@ class MockOAuth2Client extends _i1.Mock implements _i8.OAuth2Client {
   _i3.AccessTokenResponse http2TokenResponse(
     _i6.Response? response, {
     List<String>? requestedScopes,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #http2TokenResponse,
-          [response],
-          {#requestedScopes: requestedScopes},
-        ),
-        returnValue: _FakeAccessTokenResponse_1(
-          this,
-          Invocation.method(
-            #http2TokenResponse,
-            [response],
-            {#requestedScopes: requestedScopes},
-          ),
-        ),
-      ) as _i3.AccessTokenResponse);
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #http2TokenResponse,
+      [response],
+      {#requestedScopes: requestedScopes},
+    ),
+    returnValue: _FakeAccessTokenResponse_1(
+      this,
+      Invocation.method(
+        #http2TokenResponse,
+        [response],
+        {#requestedScopes: requestedScopes},
+      ),
+    ),
+  ) as _i3.AccessTokenResponse);
 
   @override
   String serializeScopes(List<String>? scopes) => (super.noSuchMethod(
-        Invocation.method(
-          #serializeScopes,
-          [scopes],
-        ),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #serializeScopes,
-            [scopes],
-          ),
-        ),
-      ) as String);
+    Invocation.method(#serializeScopes, [scopes]),
+    returnValue: _i9.dummyValue<String>(
+      this,
+      Invocation.method(#serializeScopes, [scopes]),
+    ),
+  ) as String);
 }
 
 /// A class which mocks [Client].
@@ -824,45 +673,27 @@ class MockClient extends _i1.Mock implements _i6.Client {
   }
 
   @override
-  _i10.Future<_i6.Response> head(
-    Uri? url, {
-    Map<String, String>? headers,
-  }) =>
+  _i10.Future<_i6.Response> head(Uri? url, {Map<String, String>? headers}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #head,
-          [url],
-          {#headers: headers},
-        ),
-        returnValue: _i10.Future<_i6.Response>.value(_FakeResponse_4(
-          this,
-          Invocation.method(
-            #head,
-            [url],
-            {#headers: headers},
+        Invocation.method(#head, [url], {#headers: headers}),
+        returnValue: _i10.Future<_i6.Response>.value(
+          _FakeResponse_4(
+            this,
+            Invocation.method(#head, [url], {#headers: headers}),
           ),
-        )),
+        ),
       ) as _i10.Future<_i6.Response>);
 
   @override
-  _i10.Future<_i6.Response> get(
-    Uri? url, {
-    Map<String, String>? headers,
-  }) =>
+  _i10.Future<_i6.Response> get(Uri? url, {Map<String, String>? headers}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #get,
-          [url],
-          {#headers: headers},
-        ),
-        returnValue: _i10.Future<_i6.Response>.value(_FakeResponse_4(
-          this,
-          Invocation.method(
-            #get,
-            [url],
-            {#headers: headers},
+        Invocation.method(#get, [url], {#headers: headers}),
+        returnValue: _i10.Future<_i6.Response>.value(
+          _FakeResponse_4(
+            this,
+            Invocation.method(#get, [url], {#headers: headers}),
           ),
-        )),
+        ),
       ) as _i10.Future<_i6.Response>);
 
   @override
@@ -871,30 +702,23 @@ class MockClient extends _i1.Mock implements _i6.Client {
     Map<String, String>? headers,
     Object? body,
     _i11.Encoding? encoding,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #post,
+      [url],
+      {#headers: headers, #body: body, #encoding: encoding},
+    ),
+    returnValue: _i10.Future<_i6.Response>.value(
+      _FakeResponse_4(
+        this,
         Invocation.method(
           #post,
           [url],
-          {
-            #headers: headers,
-            #body: body,
-            #encoding: encoding,
-          },
+          {#headers: headers, #body: body, #encoding: encoding},
         ),
-        returnValue: _i10.Future<_i6.Response>.value(_FakeResponse_4(
-          this,
-          Invocation.method(
-            #post,
-            [url],
-            {
-              #headers: headers,
-              #body: body,
-              #encoding: encoding,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i6.Response>);
+      ),
+    ),
+  ) as _i10.Future<_i6.Response>);
 
   @override
   _i10.Future<_i6.Response> put(
@@ -902,30 +726,23 @@ class MockClient extends _i1.Mock implements _i6.Client {
     Map<String, String>? headers,
     Object? body,
     _i11.Encoding? encoding,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #put,
+      [url],
+      {#headers: headers, #body: body, #encoding: encoding},
+    ),
+    returnValue: _i10.Future<_i6.Response>.value(
+      _FakeResponse_4(
+        this,
         Invocation.method(
           #put,
           [url],
-          {
-            #headers: headers,
-            #body: body,
-            #encoding: encoding,
-          },
+          {#headers: headers, #body: body, #encoding: encoding},
         ),
-        returnValue: _i10.Future<_i6.Response>.value(_FakeResponse_4(
-          this,
-          Invocation.method(
-            #put,
-            [url],
-            {
-              #headers: headers,
-              #body: body,
-              #encoding: encoding,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i6.Response>);
+      ),
+    ),
+  ) as _i10.Future<_i6.Response>);
 
   @override
   _i10.Future<_i6.Response> patch(
@@ -933,30 +750,23 @@ class MockClient extends _i1.Mock implements _i6.Client {
     Map<String, String>? headers,
     Object? body,
     _i11.Encoding? encoding,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #patch,
+      [url],
+      {#headers: headers, #body: body, #encoding: encoding},
+    ),
+    returnValue: _i10.Future<_i6.Response>.value(
+      _FakeResponse_4(
+        this,
         Invocation.method(
           #patch,
           [url],
-          {
-            #headers: headers,
-            #body: body,
-            #encoding: encoding,
-          },
+          {#headers: headers, #body: body, #encoding: encoding},
         ),
-        returnValue: _i10.Future<_i6.Response>.value(_FakeResponse_4(
-          this,
-          Invocation.method(
-            #patch,
-            [url],
-            {
-              #headers: headers,
-              #body: body,
-              #encoding: encoding,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i6.Response>);
+      ),
+    ),
+  ) as _i10.Future<_i6.Response>);
 
   @override
   _i10.Future<_i6.Response> delete(
@@ -964,91 +774,59 @@ class MockClient extends _i1.Mock implements _i6.Client {
     Map<String, String>? headers,
     Object? body,
     _i11.Encoding? encoding,
-  }) =>
-      (super.noSuchMethod(
+  }) => (super.noSuchMethod(
+    Invocation.method(
+      #delete,
+      [url],
+      {#headers: headers, #body: body, #encoding: encoding},
+    ),
+    returnValue: _i10.Future<_i6.Response>.value(
+      _FakeResponse_4(
+        this,
         Invocation.method(
           #delete,
           [url],
-          {
-            #headers: headers,
-            #body: body,
-            #encoding: encoding,
-          },
+          {#headers: headers, #body: body, #encoding: encoding},
         ),
-        returnValue: _i10.Future<_i6.Response>.value(_FakeResponse_4(
-          this,
-          Invocation.method(
-            #delete,
-            [url],
-            {
-              #headers: headers,
-              #body: body,
-              #encoding: encoding,
-            },
-          ),
-        )),
-      ) as _i10.Future<_i6.Response>);
+      ),
+    ),
+  ) as _i10.Future<_i6.Response>);
 
   @override
-  _i10.Future<String> read(
-    Uri? url, {
-    Map<String, String>? headers,
-  }) =>
+  _i10.Future<String> read(Uri? url, {Map<String, String>? headers}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #read,
-          [url],
-          {#headers: headers},
-        ),
-        returnValue: _i10.Future<String>.value(_i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #read,
-            [url],
-            {#headers: headers},
+        Invocation.method(#read, [url], {#headers: headers}),
+        returnValue: _i10.Future<String>.value(
+          _i9.dummyValue<String>(
+            this,
+            Invocation.method(#read, [url], {#headers: headers}),
           ),
-        )),
+        ),
       ) as _i10.Future<String>);
 
   @override
   _i10.Future<_i12.Uint8List> readBytes(
     Uri? url, {
     Map<String, String>? headers,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #readBytes,
-          [url],
-          {#headers: headers},
-        ),
-        returnValue: _i10.Future<_i12.Uint8List>.value(_i12.Uint8List(0)),
-      ) as _i10.Future<_i12.Uint8List>);
+  }) => (super.noSuchMethod(
+    Invocation.method(#readBytes, [url], {#headers: headers}),
+    returnValue: _i10.Future<_i12.Uint8List>.value(_i12.Uint8List(0)),
+  ) as _i10.Future<_i12.Uint8List>);
 
   @override
   _i10.Future<_i6.StreamedResponse> send(_i6.BaseRequest? request) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #send,
-          [request],
+        Invocation.method(#send, [request]),
+        returnValue: _i10.Future<_i6.StreamedResponse>.value(
+          _FakeStreamedResponse_5(this, Invocation.method(#send, [request])),
         ),
-        returnValue:
-            _i10.Future<_i6.StreamedResponse>.value(_FakeStreamedResponse_5(
-          this,
-          Invocation.method(
-            #send,
-            [request],
-          ),
-        )),
       ) as _i10.Future<_i6.StreamedResponse>);
 
   @override
   void close() => super.noSuchMethod(
-        Invocation.method(
-          #close,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#close, []),
+    returnValueForMissingStub: null,
+  );
 }
 
 /// A class which mocks [TokenStorage].
@@ -1061,123 +839,85 @@ class MockTokenStorage extends _i1.Mock implements _i13.TokenStorage {
 
   @override
   String get key => (super.noSuchMethod(
-        Invocation.getter(#key),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.getter(#key),
-        ),
-      ) as String);
+    Invocation.getter(#key),
+    returnValue: _i9.dummyValue<String>(this, Invocation.getter(#key)),
+  ) as String);
 
   @override
   _i7.BaseStorage get storage => (super.noSuchMethod(
-        Invocation.getter(#storage),
-        returnValue: _FakeBaseStorage_6(
-          this,
-          Invocation.getter(#storage),
-        ),
-      ) as _i7.BaseStorage);
+    Invocation.getter(#storage),
+    returnValue: _FakeBaseStorage_6(this, Invocation.getter(#storage)),
+  ) as _i7.BaseStorage);
 
   @override
   set key(String? value) => super.noSuchMethod(
-        Invocation.setter(
-          #key,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#key, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   set storage(_i7.BaseStorage? value) => super.noSuchMethod(
-        Invocation.setter(
-          #storage,
-          value,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#storage, value),
+    returnValueForMissingStub: null,
+  );
 
   @override
   _i10.Future<_i3.AccessTokenResponse?> getToken(List<String>? scopes) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getToken,
-          [scopes],
-        ),
+        Invocation.method(#getToken, [scopes]),
         returnValue: _i10.Future<_i3.AccessTokenResponse?>.value(),
       ) as _i10.Future<_i3.AccessTokenResponse?>);
 
   @override
   _i10.Future<void> addToken(_i3.AccessTokenResponse? tknResp) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #addToken,
-          [tknResp],
-        ),
+        Invocation.method(#addToken, [tknResp]),
         returnValue: _i10.Future<void>.value(),
         returnValueForMissingStub: _i10.Future<void>.value(),
       ) as _i10.Future<void>);
 
   @override
   _i10.Future<Map<String, Map<dynamic, dynamic>>> insertToken(
-          _i3.AccessTokenResponse? tknResp) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #insertToken,
-          [tknResp],
-        ),
-        returnValue: _i10.Future<Map<String, Map<dynamic, dynamic>>>.value(
-            <String, Map<dynamic, dynamic>>{}),
-      ) as _i10.Future<Map<String, Map<dynamic, dynamic>>>);
+    _i3.AccessTokenResponse? tknResp,
+  ) => (super.noSuchMethod(
+    Invocation.method(#insertToken, [tknResp]),
+    returnValue: _i10.Future<Map<String, Map<dynamic, dynamic>>>.value(
+      <String, Map<dynamic, dynamic>>{},
+    ),
+  ) as _i10.Future<Map<String, Map<dynamic, dynamic>>>);
 
   @override
   _i10.Future<bool> deleteToken(List<String>? scopes) => (super.noSuchMethod(
-        Invocation.method(
-          #deleteToken,
-          [scopes],
-        ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+    Invocation.method(#deleteToken, [scopes]),
+    returnValue: _i10.Future<bool>.value(false),
+  ) as _i10.Future<bool>);
 
   @override
   _i10.Future<bool> deleteAllTokens() => (super.noSuchMethod(
-        Invocation.method(
-          #deleteAllTokens,
-          [],
-        ),
-        returnValue: _i10.Future<bool>.value(false),
-      ) as _i10.Future<bool>);
+    Invocation.method(#deleteAllTokens, []),
+    returnValue: _i10.Future<bool>.value(false),
+  ) as _i10.Future<bool>);
 
   @override
   List<String> clearScopes(List<String>? scopes) => (super.noSuchMethod(
-        Invocation.method(
-          #clearScopes,
-          [scopes],
-        ),
-        returnValue: <String>[],
-      ) as List<String>);
+    Invocation.method(#clearScopes, [scopes]),
+    returnValue: <String>[],
+  ) as List<String>);
 
   @override
   List<dynamic> getSortedScopes(List<String>? scopes) => (super.noSuchMethod(
-        Invocation.method(
-          #getSortedScopes,
-          [scopes],
-        ),
-        returnValue: <dynamic>[],
-      ) as List<dynamic>);
+    Invocation.method(#getSortedScopes, [scopes]),
+    returnValue: <dynamic>[],
+  ) as List<dynamic>);
 
   @override
   String getScopeKey(List<String>? scope) => (super.noSuchMethod(
-        Invocation.method(
-          #getScopeKey,
-          [scope],
-        ),
-        returnValue: _i9.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getScopeKey,
-            [scope],
-          ),
-        ),
-      ) as String);
+    Invocation.method(#getScopeKey, [scope]),
+    returnValue: _i9.dummyValue<String>(
+      this,
+      Invocation.method(#getScopeKey, [scope]),
+    ),
+  ) as String);
 }
 
 /// A class which mocks [BaseStorage].
@@ -1190,27 +930,14 @@ class MockBaseStorage extends _i1.Mock implements _i7.BaseStorage {
 
   @override
   _i10.Future<String?> read(String? key) => (super.noSuchMethod(
-        Invocation.method(
-          #read,
-          [key],
-        ),
-        returnValue: _i10.Future<String?>.value(),
-      ) as _i10.Future<String?>);
+    Invocation.method(#read, [key]),
+    returnValue: _i10.Future<String?>.value(),
+  ) as _i10.Future<String?>);
 
   @override
-  _i10.Future<void> write(
-    String? key,
-    String? value,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #write,
-          [
-            key,
-            value,
-          ],
-        ),
-        returnValue: _i10.Future<void>.value(),
-        returnValueForMissingStub: _i10.Future<void>.value(),
-      ) as _i10.Future<void>);
+  _i10.Future<void> write(String? key, String? value) => (super.noSuchMethod(
+    Invocation.method(#write, [key, value]),
+    returnValue: _i10.Future<void>.value(),
+    returnValueForMissingStub: _i10.Future<void>.value(),
+  ) as _i10.Future<void>);
 }

@@ -6,13 +6,14 @@ import 'package:oauth2_client/oauth2_client.dart';
 ///
 class RedditOauth2Client extends OAuth2Client {
   /// `redirectUri` is your service access token url
-  RedditOauth2Client(
-      {required super.redirectUri, required super.customUriScheme})
-      : super(
-          authorizeUrl: 'https://www.reddit.com/api/v1/authorize.compact',
-          //Your service's authorization url
-          tokenUrl: 'https://www.reddit.com/api/v1/access_token',
-          scopeSeparator: ',',
-          credentialsLocation: CredentialsLocation.header,
-        );
+  RedditOauth2Client({
+    required super.redirectUri,
+    required super.customUriScheme,
+  }) : super(
+         authorizeUrl: 'https://www.reddit.com/api/v1/authorize.compact',
+         //Your service's authorization url
+         tokenUrl: 'https://www.reddit.com/api/v1/access_token',
+         scopeSeparator: ',',
+         credentialsLocation: CredentialsLocation.header,
+       );
 }

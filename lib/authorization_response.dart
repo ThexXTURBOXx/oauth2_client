@@ -11,7 +11,9 @@ class AuthorizationResponse {
   String? errorDescription;
 
   AuthorizationResponse.fromRedirectUri(
-      String redirectUri, String? checkState) {
+    String redirectUri,
+    String? checkState,
+  ) {
     queryParams = Uri.parse(redirectUri).queryParameters;
 
     error = getQueryParam('error');
@@ -21,7 +23,8 @@ class AuthorizationResponse {
       code = getQueryParam('code');
       if (code == null) {
         throw OAuth2Exception(
-            'Expected "code" parameter not found in response');
+          'Expected "code" parameter not found in response',
+        );
       }
 
       // Only validate the state if the checkState was actually supplied
@@ -29,12 +32,14 @@ class AuthorizationResponse {
         state = getQueryParam('state');
         if (state == null) {
           throw OAuth2Exception(
-              'Expected "state" parameter not found in response');
+            'Expected "state" parameter not found in response',
+          );
         }
 
         if (state != checkState) {
           throw OAuth2Exception(
-              '"state" parameter in response doesn\'t correspond to the expected value');
+            '"state" parameter in response doesn\'t correspond to the expected value',
+          );
         }
       }
     }

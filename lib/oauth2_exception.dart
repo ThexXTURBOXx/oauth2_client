@@ -4,8 +4,12 @@ class OAuth2Exception implements Exception {
   Exception? cause;
   StackTrace? causeTrace;
 
-  OAuth2Exception(this.error,
-      {this.errorDescription, this.cause, this.causeTrace});
+  OAuth2Exception(
+    this.error, {
+    this.errorDescription,
+    this.cause,
+    this.causeTrace,
+  });
 
   @override
   String toString() {

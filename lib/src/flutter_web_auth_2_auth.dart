@@ -6,11 +6,12 @@ BaseWebAuth createWebAuth() => FlutterWebAuth2Authenticator();
 
 class FlutterWebAuth2Authenticator implements BaseWebAuth {
   @override
-  Future<String> authenticate(
-      {required String callbackUrlScheme,
-      required String url,
-      required String redirectUrl,
-      Map<String, dynamic>? opts}) async {
+  Future<String> authenticate({
+    required String callbackUrlScheme,
+    required String url,
+    required String redirectUrl,
+    Map<String, dynamic>? opts,
+  }) async {
     return await FlutterWebAuth2.authenticate(
       callbackUrlScheme: callbackUrlScheme,
       url: url,
