@@ -68,9 +68,9 @@ After that, please also follow the setup guides of [flutter_web_auth_2](https://
 [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage).
 
 ## Upgrading to 5.0.0
-Compared to 4.0.0, there are not that many breaking changes. Just be aware that:
+Compared to 4.0.0, there are the following breaking changes:
 * `flutter_web_auth_2` now also handles browser authentication
-* `flutter_web_auth_2` migrated to built-in Kotlin. You need to account for this as well
+* Make sure to follow [`flutter_web_auth_2`'s migration guide](https://pub.dev/packages/flutter_web_auth_2#upgrading-to-6x) as it was updated to version `6.x`
 * The `state` and `code_verifier` parameters have larger default lengths now (64 and 100, respectively - before: 25 and 80)
 
 ## Upgrading to 4.0.0
@@ -80,6 +80,7 @@ Compared to 3.0.0, there are not that many breaking changes. Just be aware that:
 * We updated all dependencies (some with breaking changes - in particular, you might need to also follow these migration guides: https://github.com/ThexXTURBOXx/flutter_web_auth_2?tab=readme-ov-file#migration)
 * We migrated to `web` and added WASM support
 
+<!---
 ## Upgrading to 3.0.0
 Version 3.0.0 introduced some breaking changes that need to be addressed if you are upgrading from previous versions.
 
@@ -142,6 +143,7 @@ OAuth2Helper hlp = OAuth2Helper(client, {
 ...
 
 ```
+--->
 
 # Usage with the helper class #
 The simplest way to use the library is through the *OAuth2Helper* class.
