@@ -15,8 +15,11 @@ dependencies:
   flutter:
     sdk: flutter
   material_ui: ^1.11.0
-  oauth2_client: # Normally you would need to specify something like "^4.0.0" here
-    path: ..
+  oauth2_client: ^5.0.0
 
 dev_dependencies:
   flutter_lints: ^6.0.0
+
+dependency_overrides:
+  oauth2_client:
+    path: ..

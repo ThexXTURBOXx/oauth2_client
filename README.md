@@ -61,7 +61,7 @@ Add the library to your *pubspec.yaml* file:
 
 ```yaml
 dependencies:
-    oauth2_client: ^5.0.0-alpha.1
+    oauth2_client: ^5.0.0
 ```
 
 After that, please also follow the setup guides of [flutter_web_auth_2](https://pub.dev/packages/flutter_web_auth_2) as well as

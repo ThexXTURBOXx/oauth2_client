@@ -1,3 +1,6 @@
+## [5.0.0] - 2026/11/19
+* Stable version bump
+
 ## [5.0.0-alpha.3] - 2026/11/13
 * Update some documentation
 
